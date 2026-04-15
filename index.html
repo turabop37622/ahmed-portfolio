@@ -1,1259 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Noor Ahmed</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#07070e;
-  --surface:#0c0c18;
-  --card:#10101f;
-  --border:rgba(255,255,255,0.07);
-  --g1:#a855f7;
-  --g2:#ec4899;
-  --g3:#06b6d4;
-  --g4:#f97316;
-  --grad:linear-gradient(135deg,#a855f7,#ec4899);
-  --grad2:linear-gradient(135deg,#06b6d4,#a855f7);
-  --grad3:linear-gradient(135deg,#f97316,#ec4899);
-  --grad4:linear-gradient(135deg,#a855f7,#06b6d4);
-  --text:#f1f1ff;
-  --muted:#52526e;
-  --white:#ffffff;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;cursor:none;}
-
-/* CURSOR */
-#cur{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 0 12px rgba(168,85,247,.6);}
-#curR{position:fixed;width:34px;height:34px;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);border:1px solid rgba(168,85,247,.4);transition:width .3s,height .3s;}
-
-/* INTRO */
-#intro{position:fixed;inset:0;z-index:5000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;}
-#intro::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(168,85,247,.06) 0%,transparent 70%);}
-.intro-line{overflow:hidden;line-height:1.05;}
-.iw{display:block;font-family:'Familjen Grotesk',sans-serif;font-size:clamp(3.5rem,13vw,12rem);font-weight:700;letter-spacing:-.02em;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards;}
-.iw1{color:var(--white);}
-.iw2{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation-delay:.18s;}
-.intro-sub{font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);opacity:0;margin-top:16px;animation:fadeIn .6s .85s ease forwards;font-weight:500;}
-.intro-bar-wrap{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);width:180px;height:1px;background:rgba(255,255,255,.07);overflow:hidden;}
-.intro-bar{height:100%;width:0;background:var(--grad);animation:fillBar 1.8s .2s ease forwards;}
-@keyframes slideUp{to{transform:translateY(0);}}
-@keyframes fadeIn{to{opacity:1;}}
-@keyframes fillBar{to{width:100%;}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:20px 64px;display:flex;justify-content:space-between;align-items:center;
-  backdrop-filter:blur(24px);background:rgba(7,7,14,.75);
-  border-bottom:1px solid var(--border);
-  animation:navSlideDown .8s 2s cubic-bezier(.16,1,.3,1) both;
-}
-@keyframes navSlideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.logo{font-family:'Familjen Grotesk',sans-serif;font-size:1.25rem;font-weight:700;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links{display:flex;gap:32px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:.06em;font-weight:600;transition:color .3s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--grad);transition:width .3s;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a:hover::after{width:100%;}
-.nav-cta{background:var(--grad);color:#fff;padding:9px 22px;border-radius:8px;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.04em;transition:opacity .3s,transform .2s,box-shadow .3s;box-shadow:0 4px 20px rgba(168,85,247,.25);}
-.nav-cta:hover{opacity:.9;transform:translateY(-2px) scale(1.03);box-shadow:0 10px 32px rgba(168,85,247,.45);}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 40px 60px;position:relative;overflow:hidden;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(168,85,247,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);animation:gridDrift 20s ease infinite alternate;}
-@keyframes gridDrift{from{background-position:0 0;}to{background-position:32px 32px;}}
-.hero-blob1{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.12) 0%,transparent 70%);top:-250px;right:-200px;pointer-events:none;animation:blobFloat1 8s ease infinite;}
-.hero-blob2{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.08) 0%,transparent 70%);bottom:-150px;left:-150px;pointer-events:none;animation:blobFloat2 10s ease infinite;}
-.hero-blob3{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(236,72,153,.06) 0%,transparent 70%);top:40%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:blobFloat3 6s ease infinite;}
-@keyframes blobFloat1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-30px,20px) scale(1.05);}}
-@keyframes blobFloat2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(20px,-30px) scale(1.08);}}
-@keyframes blobFloat3{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6;}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1;}}
-.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.hp{position:absolute;border-radius:50%;animation:particleFly linear infinite;}
-@keyframes particleFly{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) scale(1);opacity:0;}}
-.hero-ring{position:absolute;border-radius:50%;border:1px solid;pointer-events:none;top:50%;left:50%;transform-style:preserve-3d;}
-.hero-ring-1{width:520px;height:520px;margin:-260px 0 0 -260px;border-color:rgba(168,85,247,.08);animation:ringOrbit1 18s linear infinite;}
-.hero-ring-2{width:380px;height:380px;margin:-190px 0 0 -190px;border-color:rgba(6,182,212,.07);animation:ringOrbit2 12s linear infinite reverse;}
-.hero-ring-3{width:680px;height:680px;margin:-340px 0 0 -340px;border-color:rgba(236,72,153,.05);animation:ringOrbit3 24s linear infinite;}
-@keyframes ringOrbit1{from{transform:rotate(0deg) rotateX(70deg);}to{transform:rotate(360deg) rotateX(70deg);}}
-@keyframes ringOrbit2{from{transform:rotate(0deg) rotateX(60deg);}to{transform:rotate(360deg) rotateX(60deg);}}
-@keyframes ringOrbit3{from{transform:rotate(0deg) rotateX(75deg);}to{transform:rotate(360deg) rotateX(75deg);}}
-.hero-pill{position:absolute;background:rgba(12,12,24,.85);border:1px solid rgba(168,85,247,.18);border-radius:100px;padding:7px 16px;font-size:.65rem;font-weight:700;letter-spacing:.08em;color:rgba(168,85,247,.8);backdrop-filter:blur(10px);pointer-events:none;white-space:nowrap;opacity:0;}
-@keyframes pillFloat{0%,100%{transform:translateY(0px);}50%{transform:translateY(-10px);}}
-@keyframes pillAppear{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.pill-1{top:22%;left:7%;animation:pillAppear .6s 2.6s ease forwards, pillFloat 4.2s 3.3s ease-in-out infinite;}
-.pill-2{top:28%;right:6%;animation:pillAppear .6s 2.9s ease forwards, pillFloat 5.1s 3.6s ease-in-out infinite;}
-.pill-3{bottom:30%;left:5%;animation:pillAppear .6s 3.2s ease forwards, pillFloat 3.8s 3.9s ease-in-out infinite;}
-.pill-4{bottom:24%;right:8%;animation:pillAppear .6s 3.4s ease forwards, pillFloat 4.6s 4.1s ease-in-out infinite;}
-.pill-5{top:13%;left:50%;margin-left:-60px;animation:pillAppear .6s 3.0s ease forwards, pillFloat 4.8s 3.7s ease-in-out infinite;}
-.hero-node{position:absolute;pointer-events:none;width:5px;height:5px;}
-.hero-node::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--g1);box-shadow:0 0 12px var(--g1),0 0 24px rgba(168,85,247,.4);animation:nodePulse 2.5s ease infinite;}
-.hero-node::after{content:'';display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;border:1px solid rgba(168,85,247,.25);animation:nodeRing 2.5s ease infinite;}
-@keyframes nodePulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.6;}}
-@keyframes nodeRing{0%{transform:translate(-50%,-50%) scale(1);opacity:.5;}100%{transform:translate(-50%,-50%) scale(2.5);opacity:0;}}
-.node-1{top:38%;left:16%;}
-.node-2{top:52%;right:18%;}
-.node-3{bottom:28%;left:38%;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.18);padding:7px 16px;border-radius:100px;font-size:.73rem;font-weight:600;color:var(--g1);letter-spacing:.04em;margin-bottom:28px;opacity:0;animation:fadeUp .7s 2.1s ease forwards;position:relative;z-index:2;}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--g1);animation:pulse 2s ease infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.8);box-shadow:0 0 8px var(--g1);}}
-h1.htitle{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(4.5rem,11vw,11rem);font-weight:700;line-height:.9;letter-spacing:-.03em;opacity:0;animation:heroTitleIn 1s 2.2s cubic-bezier(.16,1,.3,1) forwards;position:relative;z-index:2;}
-@keyframes heroTitleIn{from{opacity:0;transform:translateY(40px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
-.h-dim{color:rgba(255,255,255,.15);}
-.h-white{color:var(--white);}
-.h-grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 4s 3s ease infinite alternate;}
-@keyframes gradShift{from{filter:hue-rotate(0deg);}to{filter:hue-rotate(30deg);}}
-.hero-sub{max-width:520px;color:var(--muted);font-size:1rem;line-height:1.8;margin-top:28px;opacity:0;animation:fadeUp .8s 2.45s ease forwards;position:relative;z-index:2;}
-.hero-sub strong{color:var(--text);}
-.hero-btns{display:flex;gap:14px;margin-top:36px;opacity:0;animation:fadeUp .8s 2.6s ease forwards;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;}
-.btn-primary{background:var(--grad);color:#fff;padding:14px 32px;border-radius:10px;text-decoration:none;font-size:.85rem;font-weight:700;transition:transform .25s,box-shadow .3s;box-shadow:0 4px 24px rgba(168,85,247,.35);position:relative;overflow:hidden;}
-.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .3s;}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(168,85,247,.55);}
-.btn-primary:hover::after{opacity:1;}
-.btn-outline{border:1px solid rgba(168,85,247,.25);color:var(--muted);padding:14px 32px;border-radius:10px;text-decoration:none;font-size:.85rem;font-weight:600;transition:border-color .3s,color .3s,background .3s,transform .25s;}
-.btn-outline:hover{border-color:rgba(168,85,247,.5);color:var(--text);background:rgba(168,85,247,.07);transform:translateY(-3px);}
-
-/* MARQUEE */
-.mq-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;background:var(--surface);position:relative;}
-.mq-wrap::before,.mq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
-.mq-wrap::before{left:0;background:linear-gradient(90deg,var(--surface),transparent);}
-.mq-wrap::after{right:0;background:linear-gradient(-90deg,var(--surface),transparent);}
-.mq-track{display:flex;animation:mq 28s linear infinite;width:max-content;}
-.mq-track:hover{animation-play-state:paused;}
-.mq-item{padding:0 36px;font-family:'Familjen Grotesk',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.04em;color:var(--muted);white-space:nowrap;transition:color .3s;}
-.mq-item:hover{color:var(--text);}
-.mq-sep{padding:0 12px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:1rem;}
-@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* APPLE SCROLL — ABOUT ME */
-.apple-scroll-section{height:300vh;position:relative;}
-.apple-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg);}
-.apple-frame{width:100vw;height:100vh;border-radius:0px;overflow:hidden;will-change:transform,border-radius,opacity;transform-origin:center center;border:0px solid rgba(168,85,247,.0);position:relative;}
-.apple-inner{width:100%;height:100%;background:linear-gradient(135deg,#07070e,#0f0820,#070a1a);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.ag1{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.08) 0%,transparent 70%);top:-100px;left:-100px;}
-.ag2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.06) 0%,transparent 70%);bottom:-100px;right:-100px;}
-.about-apple{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center;padding:52px 64px;width:100%;max-width:1100px;}
-.aap-img{aspect-ratio:4/5;border-radius:24px;background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(6,182,212,.05));border:1px solid rgba(168,85,247,.15);display:flex;align-items:center;justify-content:center;font-size:8rem;position:relative;overflow:hidden;max-height:380px;}
-.aap-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(168,85,247,.07),transparent 60%);}
-.aap-floats{position:absolute;inset:0;pointer-events:none;}
-.aap-f1{position:absolute;bottom:-16px;right:-16px;background:rgba(12,12,24,.9);border:1px solid rgba(168,85,247,.2);border-radius:12px;padding:12px 18px;backdrop-filter:blur(12px);}
-.aap-f2{position:absolute;top:16px;left:-16px;background:rgba(12,12,24,.9);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:12px 18px;backdrop-filter:blur(12px);}
-.aap-fl{font-size:.58rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
-.aap-fv{font-family:'Familjen Grotesk',sans-serif;font-size:1.2rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.aap-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g1);font-weight:600;margin-bottom:14px;}
-.aap-title{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:20px;color:var(--white);}
-.aap-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.aap-p{color:rgba(255,255,255,.45);font-size:.88rem;line-height:1.8;margin-bottom:14px;}
-.aap-p strong{color:rgba(255,255,255,.75);}
-.aap-tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
-.aap-tool{background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.15);color:rgba(168,85,247,.8);padding:5px 12px;border-radius:6px;font-size:.7rem;font-weight:600;letter-spacing:.03em;transition:all .25s;cursor:default;}
-.aap-tool:hover{background:rgba(168,85,247,.14);border-color:rgba(168,85,247,.4);transform:translateY(-2px);}
-.apple-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:52px 60px;background:linear-gradient(to top,rgba(7,7,14,.6) 0%,transparent 40%);pointer-events:none;}
-.ao-content{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
-.ao-content.show{opacity:1;transform:translateY(0);}
-.ao-tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g1);margin-bottom:12px;font-weight:600;}
-.ao-title{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2.5rem);font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--white);}
-.ao-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.ao-desc{color:rgba(255,255,255,.35);font-size:.82rem;margin-top:8px;max-width:400px;line-height:1.6;}
-
-/* SVC SECTIONS */
-.svc-sticky-wrap{position:relative;}
-.svc-sticky-height{height:220vh;position:relative;}
-.svc-sticky-pin{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:var(--bg);z-index:2;display:flex;align-items:center;}
-.svc-curtain-top,.svc-curtain-bottom{position:absolute;left:0;right:0;background:var(--bg);z-index:4;transition:none;will-change:transform;}
-.svc-curtain-top{top:0;height:50%;}
-.svc-curtain-bottom{bottom:0;height:50%;}
-.svc-scanline{position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,rgba(168,85,247,.9),transparent);z-index:5;left:0;opacity:0;will-change:left,opacity;box-shadow:0 0 18px 4px rgba(168,85,247,.4);pointer-events:none;}
-#banner .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(6,182,212,.9),transparent);box-shadow:0 0 18px 4px rgba(6,182,212,.4);}
-#logo   .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(6,182,212,.9),transparent);box-shadow:0 0 18px 4px rgba(6,182,212,.4);}
-#video  .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(249,115,22,.9),transparent);box-shadow:0 0 18px 4px rgba(249,115,22,.4);}
-#uiux   .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(249,115,22,.9),transparent);box-shadow:0 0 18px 4px rgba(249,115,22,.4);}
-#lottie .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(168,85,247,.9),transparent);}
-#ai     .svc-scanline{background:linear-gradient(to bottom,transparent,rgba(168,85,247,.9),transparent);}
-.svc-corner{position:absolute;width:32px;height:32px;z-index:3;opacity:0;transition:opacity .4s ease;}
-.svc-corner.tl{top:32px;left:40px;border-top:2px solid rgba(168,85,247,.5);border-left:2px solid rgba(168,85,247,.5);}
-.svc-corner.tr{top:32px;right:40px;border-top:2px solid rgba(168,85,247,.5);border-right:2px solid rgba(168,85,247,.5);}
-.svc-corner.bl{bottom:32px;left:40px;border-bottom:2px solid rgba(168,85,247,.5);border-left:2px solid rgba(168,85,247,.5);}
-.svc-corner.br{bottom:32px;right:40px;border-bottom:2px solid rgba(168,85,247,.5);border-right:2px solid rgba(168,85,247,.5);}
-.svc-sticky-wrap.svc-active .svc-corner{opacity:1;}
-.svc-bg-glow{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none;z-index:1;}
-.svc-sticky-wrap.svc-active .svc-bg-glow{opacity:1;}
-#poster .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(168,85,247,.07) 0%,transparent 70%);}
-#banner .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(6,182,212,.07) 0%,transparent 70%);}
-#logo   .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(6,182,212,.07) 0%,transparent 70%);}
-#video  .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(249,115,22,.07) 0%,transparent 70%);}
-#uiux   .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(249,115,22,.07) 0%,transparent 70%);}
-#lottie .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(168,85,247,.08) 0%,transparent 70%);}
-#ai     .svc-bg-glow{background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(168,85,247,.08) 0%,transparent 70%);}
-.svc-big-title{position:relative;padding:0 80px;width:100%;z-index:3;overflow:visible;}
-.svc-title-clip{overflow:hidden;display:block;}
-.svc-big-title-text{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(5rem,12vw,12rem);font-weight:700;line-height:.92;letter-spacing:-.04em;display:block;transform:translateX(-110%);transition:transform .9s cubic-bezier(.16,1,.3,1);will-change:transform;padding-bottom:.1em;overflow:visible;}
-.svc-sticky-wrap.svc-active .svc-big-title-text{transform:translateX(0);}
-.svc-title-clip:nth-child(2) .svc-big-title-text{transition-delay:.08s;}
-#poster .svc-big-title-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#banner .svc-big-title-text{background:var(--grad2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#logo   .svc-big-title-text{background:var(--grad2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#video  .svc-big-title-text{background:var(--grad3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#uiux   .svc-big-title-text{background:var(--grad3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#lottie .svc-big-title-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-#ai     .svc-big-title-text{background:var(--grad4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.svc-big-title-num{position:absolute;right:80px;top:50%;font-family:'Familjen Grotesk',sans-serif;font-size:clamp(7rem,20vw,22rem);font-weight:700;letter-spacing:-.06em;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;transform:translateY(-50%) translateX(80px);opacity:0;transition:transform .85s .1s cubic-bezier(.16,1,.3,1), opacity .6s .1s ease;will-change:transform,opacity;}
-.svc-sticky-wrap.svc-active .svc-big-title-num{transform:translateY(-50%) translateX(0);opacity:1;}
-.svc-big-meta{position:absolute;bottom:88px;left:80px;right:80px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;z-index:3;}
-.svc-big-desc-col{max-width:500px;opacity:0;transform:translateY(28px);transition:opacity .7s .35s ease,transform .7s .35s ease;}
-.svc-sticky-wrap.svc-active .svc-big-desc-col{opacity:1;transform:translateY(0);}
-.svc-big-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px;}
-.svc-big-desc-text{color:rgba(255,255,255,.35);font-size:.9rem;line-height:1.8;margin-bottom:16px;}
-.svc-big-chips{display:flex;flex-wrap:wrap;gap:7px;}
-.svc-big-rule{position:absolute;bottom:0;left:0;right:0;height:2px;background:transparent;overflow:hidden;z-index:6;}
-.svc-big-rule::after{content:'';position:absolute;top:0;left:0;bottom:0;width:0%;background:var(--grad);transition:width 1.2s .4s cubic-bezier(.16,1,.3,1);}
-.svc-sticky-wrap.svc-active .svc-big-rule::after{width:100%;}
-#banner .svc-big-rule::after{background:var(--grad2);}
-#logo   .svc-big-rule::after{background:var(--grad2);}
-#video  .svc-big-rule::after{background:var(--grad3);}
-#uiux   .svc-big-rule::after{background:var(--grad3);}
-.svc-index-tag{position:absolute;top:36px;right:80px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;z-index:6;opacity:0;transform:translateY(-10px);transition:opacity .5s .5s ease,transform .5s .5s ease;}
-.svc-sticky-wrap.svc-active .svc-index-tag{opacity:1;transform:translateY(0);}
-.svc-curtain-top,.svc-curtain-bottom{will-change:transform;}
-
-/* CONTENT BLOCK */
-.svc-content-block{position:relative;z-index:10;width:100%;}
-.svc-content-inner{max-width:1400px;margin:0 auto;width:100%;}
-
-/* IMAGE GALLERY FRAME */
-.section-apple-wrap{height:200vh;position:relative;}
-.section-apple-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg);}
-.section-apple-frame{width:92vw;height:88vh;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:var(--surface);display:flex;flex-direction:column;position:relative;}
-.section-apple-frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;}
-#poster  .section-apple-frame::before{background:radial-gradient(ellipse at 20% 0%,rgba(168,85,247,.06) 0%,transparent 60%);}
-#banner .af-page{grid-template-columns:repeat(3,1fr);}
-#banner .section-apple-frame::before{background:radial-gradient(ellipse at 80% 0%,rgba(6,182,212,.06) 0%,transparent 60%);}
-#logo    .section-apple-frame::before{background:radial-gradient(ellipse at 20% 0%,rgba(6,182,212,.06) 0%,transparent 60%);}
-#video   .section-apple-frame::before{background:radial-gradient(ellipse at 80% 0%,rgba(249,115,22,.06) 0%,transparent 60%);}
-#uiux    .section-apple-frame::before{background:radial-gradient(ellipse at 20% 0%,rgba(249,115,22,.05) 0%,transparent 60%);}
-#lottie  .section-apple-frame::before{background:radial-gradient(ellipse at 70% 0%,rgba(168,85,247,.06) 0%,transparent 60%);}
-#ai      .section-apple-frame::before{background:radial-gradient(ellipse at 30% 0%,rgba(168,85,247,.07) 0%,transparent 60%);}
-
-/* ── TOP BAR — dots & tag removed, only title shown ── */
-.saf-topbar{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 24px;
-  border-bottom:1px solid rgba(255,255,255,.05);
-  background:rgba(7,7,14,.6);
-  backdrop-filter:blur(10px);
-  flex-shrink:0;
-  position:relative;
-  z-index:2;
-}
-.saf-dots{ display:none !important; }
-.saf-tag { display:none !important; }
-.saf-title{
-  font-size:.72rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  font-weight:600;
-  text-align:center;
-}
-
-/* Frame content area */
-.saf-body{flex:1;overflow:hidden;position:relative;z-index:1;display:flex;flex-direction:column;padding:24px 28px;}
-
-/* CAROUSEL */
-.af-carousel{display:flex;flex-direction:column;height:100%;}
-.af-carousel-viewport{flex:1;overflow:hidden;}
-.af-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);}
-.af-page{min-width:100%;height:100%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:12px;padding:4px;}
-.af-item{border-radius:10px;overflow:hidden;cursor:zoom-in;border:1px solid rgba(255,255,255,.05);transition:transform .3s,border-color .3s,box-shadow .3s;background:var(--card);position:relative;}
-.af-item:hover{transform:scale(1.03);border-color:rgba(168,85,247,.4);box-shadow:0 8px 30px rgba(168,85,247,.18);z-index:2;}
-.af-item img,.af-item video{width:100%;height:100%;object-fit:cover;display:block;}
-
-/* ARROWS */
-.af-footer{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px 0 4px;flex-shrink:0;}
-.af-dots-wrap{display:flex;gap:6px;align-items:center;}
-.af-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;padding:0;transition:all .3s;}
-.af-dot.active{width:24px;border-radius:4px;background:linear-gradient(90deg,var(--g1),var(--g2));}
-.af-btn{position:relative;width:44px;height:44px;border-radius:12px;border:1px solid rgba(168,85,247,.2);background:rgba(168,85,247,.06);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;overflow:hidden;}
-.af-btn::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;}
-.af-btn:hover::before{opacity:1;}
-.af-btn:hover{border-color:transparent;box-shadow:0 4px 20px rgba(168,85,247,.4);transform:scale(1.08);}
-.af-btn:disabled{opacity:.2;pointer-events:none;}
-.af-btn svg{position:relative;z-index:1;width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--text);transition:color .3s;}
-.af-counter{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;min-width:36px;text-align:center;}
-
-/* CHIPS */
-.chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{padding:6px 14px;font-size:.73rem;font-weight:600;border-radius:6px;border:1px solid rgba(168,85,247,.2);color:rgba(168,85,247,.8);background:rgba(168,85,247,.05);transition:all .25s;cursor:default;}
-.chip:hover{background:rgba(168,85,247,.14);border-color:rgba(168,85,247,.45);transform:translateY(-2px);}
-.chip.c2{border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.85);background:rgba(6,182,212,.05);}
-.chip.c2:hover{background:rgba(6,182,212,.14);border-color:rgba(6,182,212,.45);}
-.chip.c3{border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.85);background:rgba(249,115,22,.05);}
-.chip.c3:hover{background:rgba(249,115,22,.14);border-color:rgba(249,115,22,.45);}
-.chip.c4{border-color:rgba(236,72,153,.2);color:rgba(236,72,153,.85);background:rgba(236,72,153,.05);}
-
-/* PACKAGING */
-.pkg-section{min-height:100vh;display:flex;align-items:center;padding:100px 64px;background:var(--surface);border-top:1px solid var(--border);overflow:hidden;}
-.pkg-inner{max-width:1200px;margin:0 auto;display:flex;gap:80px;align-items:center;width:100%;}
-.pkg-text{flex:1;}
-.pkg-viewer{flex:1;}
-.sec-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g1);font-weight:600;margin-bottom:14px;}
-.pkg-title{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.8rem);font-weight:700;line-height:.95;letter-spacing:-.03em;margin-bottom:18px;}
-.pkg-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.pkg-desc{color:var(--muted);font-size:.96rem;line-height:1.8;margin-bottom:24px;max-width:440px;}
-.pkg-hint{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:24px;}
-.pkg-hint svg{width:16px;height:16px;stroke:currentColor;fill:none;animation:rotateSvg 2s linear infinite;}
-@keyframes rotateSvg{to{transform:rotate(360deg);}}
-.face-upload-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
-.face-btn{padding:7px 14px;border-radius:7px;border:1px solid rgba(168,85,247,.2);background:rgba(168,85,247,.05);color:rgba(168,85,247,.8);font-size:.68rem;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:all .25s;font-family:'Plus Jakarta Sans',sans-serif;}
-.face-btn:hover{background:rgba(168,85,247,.15);box-shadow:0 0 14px rgba(168,85,247,.25);transform:translateY(-2px);}
-.face-btn.done{background:rgba(168,85,247,.18);border-color:rgba(168,85,247,.5);}
-.viewer-wrap{width:100%;max-width:460px;aspect-ratio:1;margin:0 auto;position:relative;perspective:1000px;}
-.box-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.07) 0%,transparent 70%);pointer-events:none;animation:pulseGlow 3s ease infinite;}
-@keyframes pulseGlow{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6;}50%{transform:translate(-50%,-50%) scale(1.1);opacity:1;}}
-#pkg3d{width:200px;height:200px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotateX(-18deg) rotateY(28deg);transform-style:preserve-3d;cursor:grab;}
-#pkg3d:active{cursor:grabbing;}
-.face{position:absolute;width:200px;height:200px;border:1px solid rgba(168,85,247,.18);display:flex;align-items:center;justify-content:center;overflow:hidden;backface-visibility:visible;}
-.face img,.face video{width:100%;height:100%;object-fit:cover;display:block;}
-.fp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:.55rem;letter-spacing:.1em;color:var(--muted);font-weight:600;text-transform:uppercase;}
-.fp .fi-icon{font-size:1.6rem;}
-.f-front{transform:translateZ(100px);background:linear-gradient(135deg,rgba(168,85,247,.05),rgba(168,85,247,.02));}
-.f-back{transform:rotateY(180deg) translateZ(100px);background:linear-gradient(135deg,rgba(6,182,212,.05),rgba(6,182,212,.02));}
-.f-right{transform:rotateY(90deg) translateZ(100px);background:linear-gradient(135deg,rgba(236,72,153,.05),rgba(236,72,153,.02));}
-.f-left{transform:rotateY(-90deg) translateZ(100px);background:linear-gradient(135deg,rgba(249,115,22,.05),rgba(249,115,22,.02));}
-.f-top{transform:rotateX(90deg) translateZ(100px);background:linear-gradient(135deg,rgba(168,85,247,.04),rgba(6,182,212,.04));}
-.f-bottom{transform:rotateX(-90deg) translateZ(100px);background:rgba(7,7,14,.9);}
-.drag-hint{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap;}
-
-/* STATS */
-.stats-section{padding:80px 64px;border-top:1px solid var(--border);}
-.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.stat{background:var(--card);padding:48px 36px;text-align:center;transition:background .3s,transform .3s;}
-.stat:hover{background:#14142a;transform:translateY(-4px);}
-.stat-n{font-family:'Familjen Grotesk',sans-serif;font-size:4rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.stat-l{color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-top:8px;}
-
-/* CONTACT */
-.contact-section{padding:120px 64px;background:var(--surface);border-top:1px solid var(--border);}
-.contact-inner{max-width:800px;margin:0 auto;text-align:center;}
-.contact-big{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(3.5rem,9vw,9rem);font-weight:700;line-height:.9;letter-spacing:-.04em;margin:16px 0 52px;}
-.contact-big .cg{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.contact-big .cw{color:rgba(255,255,255,.12);}
-.cform{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px;text-align:left;}
-.f2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.fi{width:100%;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:10px;padding:14px 18px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:500;outline:none;transition:border-color .3s,box-shadow .3s,background .3s;display:block;}
-.fi:focus{border-color:rgba(168,85,247,.45);box-shadow:0 0 0 3px rgba(168,85,247,.1);background:rgba(168,85,247,.03);}
-textarea.fi{height:120px;resize:none;margin-bottom:14px;}
-.fbtn{width:100%;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:16px;font-family:'Familjen Grotesk',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:opacity .3s,transform .2s,box-shadow .3s;box-shadow:0 4px 20px rgba(168,85,247,.3);}
-.fbtn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 10px 35px rgba(168,85,247,.45);}
-
-/* FOOTER */
-footer{padding:32px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
-.fc{color:var(--muted);font-size:.78rem;font-weight:500;}
-.socials{display:flex;gap:10px;}
-.soc{width:36px;height:36px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;transition:all .3s;}
-.soc:hover{color:var(--g1);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08);transform:translateY(-3px) scale(1.1);}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.rd1{transition-delay:.12s;}.rd2{transition-delay:.24s;}.rd3{transition-delay:.38s;}
-
-/* LIGHTBOX */
-#lightbox{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;}
-#lightbox.open{opacity:1;pointer-events:all;}
-#lb-media{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 80px;box-sizing:border-box;}
-#lb-media img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 0 80px rgba(168,85,247,.2);transform:scale(.92);transition:transform .4s cubic-bezier(.16,1,.3,1);}
-#lb-media video{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transform:scale(.92);transition:transform .4s cubic-bezier(.16,1,.3,1);}
-#lightbox.open #lb-media img,#lightbox.open #lb-media video{transform:scale(1);}
-#lb-close{position:fixed;top:20px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s;z-index:8001;}
-#lb-close:hover{background:rgba(168,85,247,.4);transform:scale(1.1);}
-#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,transform .25s;z-index:8001;}
-#lb-prev{left:16px;}#lb-next{right:16px;}
-#lb-prev:hover,#lb-next:hover{background:rgba(168,85,247,.3);transform:translateY(-50%) scale(1.1);}
-#lb-counter{position:fixed;top:24px;left:50%;transform:translateX(-50%);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;z-index:8001;}
-#lb-dots{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:8001;}
-.lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;padding:0;transition:all .3s;}
-.lb-dot.active{width:22px;border-radius:4px;background:linear-gradient(90deg,var(--g1),var(--g2));}
-
-/* HAMBURGER */
-.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:8px;cursor:pointer;padding:0;transition:background .3s;}
-.hamburger:hover{background:rgba(168,85,247,.18);}
-.hamburger span{display:block;width:18px;height:2px;border-radius:2px;background:var(--text);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s;}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;width:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mob-overlay{display:none;position:fixed;inset:0;z-index:98;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);opacity:0;transition:opacity .3s;}
-.mob-overlay.show{opacity:1;}
-input[type=file]{display:none;}
-
-/* Mobile header for svc sections */
-.svc-mobile-header{display:none;align-items:center;gap:16px;margin-bottom:28px;}
-.svc-mobile-num{font-family:'Familjen Grotesk',sans-serif;font-size:3rem;font-weight:700;line-height:1;color:rgba(255,255,255,.06);}
-.svc-mobile-info .svc-mobile-eyebrow{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;}
-.svc-mobile-info .svc-mobile-title{font-family:'Familjen Grotesk',sans-serif;font-size:clamp(1.6rem,8vw,2.4rem);font-weight:700;line-height:1;letter-spacing:-.03em;}
-
-/* ============================================================
-   RESPONSIVE — Desktop 1280px+
-   ============================================================ */
-@media(max-width:1280px){
-  nav{padding:18px 40px;}
-  .svc-big-title{padding:0 48px;}
-  .svc-big-title-num{right:48px;}
-  .svc-big-meta{left:48px;right:48px;}
-  .svc-big-rule{left:48px;right:48px;}
-  .stats-section{padding:70px 40px;}
-  .contact-section{padding:100px 40px;}
-  footer{padding:28px 40px;}
-}
-
-/* ============================================================
-   RESPONSIVE — iPad / Tablet 768px–1023px
-   ============================================================ */
-@media(max-width:1023px) and (min-width:768px){
-  .hamburger{display:flex;}
-  .nav-links{
-    display:flex!important;position:fixed;top:0;right:-100%;
-    width:min(300px,80vw);height:100vh;
-    background:#0c0c1a;border-left:1px solid rgba(168,85,247,.15);
-    flex-direction:column;justify-content:center;align-items:flex-start;
-    gap:0;padding:80px 36px 40px;z-index:99;
-    transition:right .4s cubic-bezier(.16,1,.3,1);
-  }
-  .nav-links.open{right:0;}
-  .mob-overlay{display:block;}
-  .nav-links li{width:100%;border-bottom:1px solid rgba(255,255,255,.05);}
-  .nav-links a{display:block;padding:16px 0;font-size:1rem;}
-  nav{padding:14px 28px;}
-
-  /* Gallery: 2-col grid on iPad */
-  .af-page{grid-template-columns:repeat(2,1fr)!important;}
-  #banner .af-page{grid-template-columns:repeat(2,1fr)!important;}
-
-  /* Apple frame: slightly smaller */
-  .section-apple-frame{width:95vw;height:82vh;}
-
-  /* SVC titles smaller */
-  .svc-big-title{padding:0 36px;}
-  .svc-big-title-num{right:36px;font-size:clamp(5rem,14vw,12rem);}
-  .svc-big-meta{left:36px;right:36px;bottom:70px;}
-  .svc-big-rule{left:36px;right:36px;bottom:44px;}
-  .svc-index-tag{right:36px;}
-
-  /* About */
-  .about-apple{grid-template-columns:1fr 1.2fr;gap:36px;padding:36px 40px;}
-  .aap-img{max-height:300px;}
-
-  /* Packaging */
-  .pkg-section{padding:72px 36px;}
-  .pkg-inner{flex-direction:column;gap:48px;}
-
-  /* Stats */
-  .stats-section{padding:60px 28px;}
-  .stats-inner{grid-template-columns:1fr 1fr;}
-  .stat{padding:36px 24px;}
-
-  /* Contact */
-  .contact-section{padding:80px 36px;}
-
-  /* Footer */
-  footer{padding:24px 28px;}
-
-  /* Top bar title slightly smaller on iPad */
-  .saf-title{font-size:.65rem;}
-  .saf-topbar{padding:12px 20px;}
-}
-
-/* ============================================================
-   RESPONSIVE — Mobile ≤767px
-   ============================================================ */
-@media(max-width:767px){
-  #cur,#curR{display:none;}
-  body{cursor:auto;}
-  nav{padding:14px 18px;}
-  .hero{padding:90px 20px 60px;min-height:100svh;}
-  h1.htitle{font-size:clamp(2.6rem,12vw,5rem);line-height:.95;}
-  .hero-btns{flex-direction:column;align-items:center;gap:10px;margin-top:24px;}
-  .btn-primary,.btn-outline{width:100%;max-width:280px;text-align:center;padding:13px 20px;}
-  .hero-pill{display:none;}
-  .hero-ring{display:none;}
-  .hero-node{display:none;}
-
-  /* hamburger */
-  .hamburger{display:flex;}
-  .nav-links{
-    display:flex!important;position:fixed;top:0;right:-100%;
-    width:min(300px,80vw);height:100vh;
-    background:#0c0c1a;border-left:1px solid rgba(168,85,247,.15);
-    flex-direction:column;justify-content:center;align-items:flex-start;
-    gap:0;padding:80px 36px 40px;z-index:99;
-    transition:right .4s cubic-bezier(.16,1,.3,1);
-  }
-  .nav-links.open{right:0;}
-  .mob-overlay{display:block;}
-  .nav-links li{width:100%;border-bottom:1px solid rgba(255,255,255,.05);}
-  .nav-links a{display:block;padding:16px 0;font-size:1rem;}
-
-  /* SVC sticky — disabled on mobile */
-  .svc-sticky-wrap{height:auto!important;}
-  .svc-sticky-pin{display:none!important;}
-  .section-apple-wrap{height:auto!important;}
-  .section-apple-sticky{position:relative!important;top:auto!important;height:auto!important;padding:40px 18px;}
-  .section-apple-frame{width:100%!important;height:auto!important;border-radius:18px!important;transform:none!important;opacity:1!important;}
-  .saf-body{padding:14px;}
-  .af-page{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:auto;}
-  #banner .af-page{grid-template-columns:repeat(2,1fr)!important;}
-  .af-item{aspect-ratio:1;}
-  .svc-mobile-header{display:flex!important;}
-
-  /* Top bar on mobile: even more compact */
-  .saf-topbar{padding:10px 16px;}
-  .saf-title{font-size:.6rem;letter-spacing:.1em;}
-
-  /* About */
-  .apple-scroll-section{height:auto!important;}
-  .apple-sticky{position:relative!important;top:auto!important;height:auto!important;padding:60px 18px;}
-  .apple-frame{width:100%!important;height:auto!important;border-radius:20px!important;transform:none!important;opacity:1!important;}
-  .about-apple{grid-template-columns:1fr!important;gap:20px;padding:24px 20px;}
-  .aap-img{max-height:180px;aspect-ratio:16/9;font-size:4rem;border-radius:16px;}
-  .apple-overlay{display:none!important;}
-
-  /* Stats */
-  .stats-section{padding:50px 18px;}
-  .stats-inner{grid-template-columns:1fr 1fr;}
-  .stat{padding:28px 16px;}
-  .stat-n{font-size:2.4rem;}
-
-  /* Contact */
-  .contact-section{padding:60px 18px;}
-  .contact-big{font-size:clamp(2.8rem,12vw,5rem);margin-bottom:36px;}
-  .cform{padding:20px;}
-  .f2col{grid-template-columns:1fr;gap:10px;}
-
-  /* Footer */
-  footer{flex-direction:column;gap:12px;padding:20px 18px;}
-
-  /* Lightbox */
-  #lb-prev{left:8px;}#lb-next{right:8px;}
-  #lb-media{padding:50px 50px;}
-
-  /* Packaging */
-  .pkg-section{padding:50px 18px;min-height:auto;}
-  .pkg-inner{flex-direction:column!important;gap:0;}
-  .pkg-text{width:100%;}
-  .viewer-wrap{max-width:260px;aspect-ratio:1;}
-  #pkg3d{width:140px;height:140px;}
-  .face{width:140px;height:140px;}
-  .f-front{transform:translateZ(70px)!important;}
-  .f-back{transform:rotateY(180deg) translateZ(70px)!important;}
-  .f-right{transform:rotateY(90deg) translateZ(70px)!important;}
-  .f-left{transform:rotateY(-90deg) translateZ(70px)!important;}
-  .f-top{transform:rotateX(90deg) translateZ(70px)!important;}
-  .f-bottom{transform:rotateX(-90deg) translateZ(70px)!important;}
-}
-
-@media(max-width:480px){
-  .af-page{grid-template-columns:repeat(2,1fr);}
-  .saf-title{font-size:.55rem;letter-spacing:.08em;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Noor Ahmed</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div id="cur"></div>
-<div id="curR"></div>
+  <div id="cur"></div>
+  <div id="curR"></div>
 
-<!-- INTRO -->
-<div id="intro">
-  <div class="intro-line"><span class="iw iw1">PORTFOLIO</span></div>
-  <div class="intro-line"><span class="iw iw2">CREATIVE</span></div>
-  <p class="intro-sub">Graphic · Video · Motion · UI/UX · AI</p>
-  <div class="intro-bar-wrap"><div class="intro-bar"></div></div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="logo">Noor Ahmed</div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#poster" onclick="closeMenu()">Poster</a></li>
-    <li><a href="#banner" onclick="closeMenu()">Banner</a></li>
-    <li><a href="#logo" onclick="closeMenu()">Logo</a></li>
-    <li><a href="#video" onclick="closeMenu()">Video</a></li>
-    <li><a href="#uiux" onclick="closeMenu()">UI/UX</a></li>
-    <li><a href="#packaging" onclick="closeMenu()">Packaging</a></li>
-    <li><a href="#about" onclick="closeMenu()">About</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <a href="#contact" class="nav-cta">Hire Me</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="mob-overlay" id="mob-overlay" onclick="closeMenu()"></div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-blob1"></div>
-  <div class="hero-blob2"></div>
-  <div class="hero-blob3"></div>
-  <div class="hero-ring hero-ring-1"></div>
-  <div class="hero-ring hero-ring-2"></div>
-  <div class="hero-ring hero-ring-3"></div>
-  <div class="hero-node node-1"></div>
-  <div class="hero-node node-2"></div>
-  <div class="hero-node node-3"></div>
-  <div class="hero-pill pill-1">✦ Graphic Design</div>
-  <div class="hero-pill pill-2">⬡ UI / UX</div>
-  <div class="hero-pill pill-3">◈ Lottie Motion</div>
-  <div class="hero-pill pill-4">▲ AI Art</div>
-  <div class="hero-pill pill-5">● Video Editing</div>
-  <div class="hero-particles" id="hero-particles"></div>
-  <div class="hero-badge"><div class="badge-dot"></div>Available for projects</div>
-  <h1 class="htitle">
-    <span class="h-dim">DESIGN</span><br>
-    <span class="h-white">THAT</span><br>
-    <span class="h-grad">SPEAKS</span>
-  </h1>
-  <p class="hero-sub"><strong>Graphic Designer · Video Editor · UI/UX · Lottie · AI Animation</strong><br>Visuals that stop the scroll — from brand identity to motion magic.</p>
-  <div class="hero-btns">
-    <a href="#poster" class="btn-primary">View My Work</a>
-    <a href="#contact" class="btn-outline">Get In Touch</a>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="mq-wrap">
-  <div class="mq-track">
-    <div class="mq-item">Graphic Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Logo & Branding</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Video Editing</div><div class="mq-sep">✦</div>
-    <div class="mq-item">UI / UX Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Lottie Animation</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Motion Graphics</div><div class="mq-sep">✦</div>
-    <div class="mq-item">AI Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Packaging Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Graphic Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Logo & Branding</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Video Editing</div><div class="mq-sep">✦</div>
-    <div class="mq-item">UI / UX Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Lottie Animation</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Motion Graphics</div><div class="mq-sep">✦</div>
-    <div class="mq-item">AI Design</div><div class="mq-sep">✦</div>
-    <div class="mq-item">Packaging Design</div><div class="mq-sep">✦</div>
-  </div>
-</div>
-
-<!-- ABOUT ME -->
-<div class="apple-scroll-section" id="about" style="scroll-margin-top:80px;">
-  <div class="apple-sticky">
-    <div class="apple-frame" id="apple-frame">
-      <div class="apple-inner">
-        <div class="ag1"></div><div class="ag2"></div>
-        <div class="about-apple">
-          <div style="position:relative;">
-            <div class="aap-img"><span style="position:relative;z-index:2;">🧑‍🎨</span></div>
-            <div class="aap-f1"><div class="aap-fl">Experience</div><div class="aap-fv">5+ Years</div></div>
-            <div class="aap-f2"><div class="aap-fl">Projects</div><div class="aap-fv">200+</div></div>
-          </div>
-          <div class="aap-text">
-            <div class="aap-label">About Me</div>
-            <h2 class="aap-title">The person<br>behind the <span>pixels</span></h2>
-            <p class="aap-p">I'm a <strong>multi-disciplinary creative</strong> based in Pakistan — blending graphic design, video editing, motion graphics, UI/UX, and AI-powered design into one complete skill set.</p>
-            <p class="aap-p">From <strong>logos and brand kits</strong> to <strong>Lottie animations and full UI systems</strong> — I handle the entire creative pipeline. My goal: <strong>make your brand impossible to ignore.</strong></p>
-            <div class="aap-tools">
-              <span class="aap-tool">Figma</span><span class="aap-tool">Photoshop</span><span class="aap-tool">Illustrator</span>
-              <span class="aap-tool">After Effects</span><span class="aap-tool">Premiere Pro</span><span class="aap-tool">LottieFiles</span>
-              <span class="aap-tool">Rive</span><span class="aap-tool">Blender</span><span class="aap-tool">Midjourney</span><span class="aap-tool">Spline</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="apple-overlay">
-        <div class="ao-content" id="ao-content">
-          <div class="ao-tag">Creative Designer</div>
-          <div class="ao-title">Noor Ahmed —<br><span>Multi-disciplinary Creative</span></div>
-          <div class="ao-desc">Graphic · Video · Motion · UI/UX · AI Design</div>
-        </div>
-      </div>
+  <!-- INTRO -->
+  <div id="intro">
+    <div class="intro-line"><span class="iw iw1">PORTFOLIO</span></div>
+    <div class="intro-line"><span class="iw iw2">CREATIVE</span></div>
+    <p class="intro-sub">Graphic · Video · Motion · UI/UX · AI</p>
+    <div class="intro-bar-wrap">
+      <div class="intro-bar"></div>
     </div>
   </div>
-</div>
 
-<!-- SVC 01: POSTER DESIGN -->
-<div class="svc-sticky-wrap" id="poster">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">01 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">Poster</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-        <div class="svc-big-title-num">01</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">01 / 07 — Poster Design</div>
-          <p class="svc-big-desc-text">Eye-catching posters that speak louder than words. Bold compositions, sharp typography, killer visuals.</p>
-          <div class="svc-big-chips">
-            <span class="chip">Event Poster</span><span class="chip">Brand Poster</span><span class="chip">Social Media</span><span class="chip">Print</span>
-          </div>
-        </div>
-      </div>
-      <div class="svc-big-rule"></div>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Noor Ahmed</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#poster" onclick="closeMenu()">Poster</a></li>
+      <li><a href="#banner" onclick="closeMenu()">Banner</a></li>
+      <li><a href="#logo" onclick="closeMenu()">Logo</a></li>
+      <li><a href="#video" onclick="closeMenu()">Video</a></li>
+      <li><a href="#uiux" onclick="closeMenu()">UI/UX</a></li>
+      <li><a href="#invoice" onclick="closeMenu()">Invoice Card</a></li>
+      <li><a href="#packaging" onclick="closeMenu()">Packaging</a></li>
+      <li><a href="#app" onclick="closeMenu()">Mobile App</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mob-overlay" id="mob-overlay" onclick="closeMenu()"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-blob1"></div>
+    <div class="hero-blob2"></div>
+    <div class="hero-blob3"></div>
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+
+    <div class="hero-pill pill-2">⬡ UI / UX</div>
+    <div class="hero-pill pill-4">▲ AI Art</div>
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-badge">
+      <div class="badge-dot"></div>Available for projects
+    </div>
+    <h1 class="htitle">
+      <span class="h-dim">DESIGN</span><br>
+      <span class="h-white">THAT</span><br>
+      <span class="h-grad">SPEAKS</span>
+    </h1>
+    <p class="hero-sub"><strong>UI/UX · AI Animation</strong><br>Visuals that stop the scroll — from brand identity to
+      motion magic.</p>
+    <div class="hero-btns">
+      <a href="#poster" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mq-wrap">
+    <div class="mq-track">
+      <div class="mq-item">Graphic Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Logo & Branding</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Video Editing</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">UI / UX Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Lottie Animation</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Motion Graphics</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">AI Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Packaging Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Graphic Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Logo & Branding</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Video Editing</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">UI / UX Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Lottie Animation</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Motion Graphics</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">AI Design</div>
+      <div class="mq-sep">✦</div>
+      <div class="mq-item">Packaging Design</div>
+      <div class="mq-sep">✦</div>
     </div>
   </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">Poster Design — Work Samples</div>
-            <div class="saf-tag">01 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-poster">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-poster">
 
-                  <!-- Page 1: 1–8 -->
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/poster 1.jpg" alt="Poster 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 2.jpg" alt="Poster 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 3.jpg" alt="Poster 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 4.jpg" alt="Poster 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 5.jpg" alt="Poster 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 6.jpg" alt="Poster 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 7.jpg" alt="Poster 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 8.jpg" alt="Poster 8" loading="lazy"></div>
-                  </div>
-
-                  <!-- Page 2: 9–16 -->
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/poster 9.jpg" alt="Poster 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 10.jpg" alt="Poster 10" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 11.jpg" alt="Poster 11" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 12.jpg" alt="Poster 12" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 13.jpg" alt="Poster 13" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 14.jpg" alt="Poster 14" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 15.jpg" alt="Poster 15" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 16.jpg" alt="Poster 16" loading="lazy"></div>
-                  </div>
-
-                  <!-- Page 3: 17–24 -->
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/poster 17.jpg" alt="Poster 17" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 18.jpg" alt="Poster 18" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 19.jpg" alt="Poster 19" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 20.jpg" alt="Poster 20" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 21.jpg" alt="Poster 21" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 22.jpg" alt="Poster 22" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 23.jpg" alt="Poster 23" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/poster 24.jpg" alt="Poster 24" loading="lazy"></div>
-                  </div>
-
-                  <!-- Page 4: 25–33 (9 items instead of 8) -->
-<div class="af-page">
-  <div class="af-item"><img src="assets/poster 25.jpg" alt="Poster 25" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 26.jpg" alt="Poster 26" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 27.jpg" alt="Poster 27" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 28.jpg" alt="Poster 28" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 29.jpg" alt="Poster 29" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 30.jpg" alt="Poster 30" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 31.jpg" alt="Poster 31" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 32.jpg" alt="Poster 32" loading="lazy"></div>
-</div>
-
-<!-- Page 5: 33–41 (9 items) -->
-<div class="af-page">
-  <div class="af-item"><img src="assets/poster 33.jpg" alt="Poster 33" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 34.jpg" alt="Poster 34" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 35.jpg" alt="Poster 35" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 36.jpg" alt="Poster 36" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 37.jpg" alt="Poster 37" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 38.jpg" alt="Poster 38" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 39.jpg" alt="Poster 39" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 40.jpg" alt="Poster 40" loading="lazy"></div>
-  <div class="af-item"><img src="assets/poster 41.jpg" alt="Poster 41" loading="lazy"></div>
-</div>
-                </div>
+  <!-- ABOUT ME -->
+  <div class="apple-scroll-section" id="about" style="scroll-margin-top:80px;">
+    <div class="apple-sticky">
+      <div class="apple-frame" id="apple-frame">
+        <div class="apple-inner">
+          <div class="ag1"></div>
+          <div class="ag2"></div>
+          <div class="about-apple">
+            <div style="position:relative;">
+              <div class="aap-img"><span style="position:relative;z-index:2;">🧑‍🎨</span></div>
+              <div class="aap-f1">
+                <div class="aap-fl">Experience</div>
+                <div class="aap-fv">5+ Years</div>
               </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-poster-prev" onclick="afPrev('poster')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-poster"></div>
-                <button class="af-btn" id="afb-poster-next" onclick="afNext('poster')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
+              <div class="aap-f2">
+                <div class="aap-fl">Projects</div>
+                <div class="aap-fv">200+</div>
+              </div>
+            </div>
+            <div class="aap-text">
+              <div class="aap-label">About Me</div>
+              <h2 class="aap-title">The person<br>behind the <span>pixels</span></h2>
+              <p class="aap-p">I'm a <strong>multi-disciplinary creative</strong> based in Pakistan — blending graphic
+                design, video editing, motion graphics, UI/UX, and AI-powered design into one complete skill set.</p>
+              <p class="aap-p">From <strong>logos and brand kits</strong> to <strong>Lottie animations and full UI
+                  systems</strong> — I handle the entire creative pipeline. My goal: <strong>make your brand impossible
+                  to ignore.</strong></p>
+              <div class="aap-tools">
+                <span class="aap-tool">Figma</span><span class="aap-tool">Photoshop</span><span
+                  class="aap-tool">Illustrator</span>
+                <span class="aap-tool">After Effects</span><span class="aap-tool">Premiere Pro</span><span
+                  class="aap-tool">LottieFiles</span>
+                <span class="aap-tool">Rive</span><span class="aap-tool">Midjourney</span><span
+                  class="aap-tool">Spline</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="svc-content-inner" style="padding:0 18px 60px;display:none;" id="mob-poster">
-      <div class="svc-mobile-header">
-        <div class="svc-mobile-num">01</div>
-        <div class="svc-mobile-info">
-          <div class="svc-mobile-eyebrow">01 / 07</div>
-          <div class="svc-mobile-title" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Poster Design</div>
+        <div class="apple-overlay">
+          <div class="ao-content" id="ao-content">
+            <div class="ao-tag">Creative Designer</div>
+            <div class="ao-title">Noor Ahmed —<br><span>Multi-disciplinary Creative</span></div>
+            <div class="ao-desc">Graphic · Video · Motion · UI/UX · AI Design</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- SVC 02: BANNER DESIGN -->
-<div class="svc-sticky-wrap" id="banner">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">02 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">Banner</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-        <div class="svc-big-title-num">02</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">02 / 07 — Banner Design</div>
-          <p class="svc-big-desc-text">Stunning banners for digital and print — web banners, social ads, outdoor billboards.</p>
-          <div class="svc-big-chips">
-            <span class="chip c2">Web Banner</span><span class="chip c2">Social Ad</span><span class="chip c2">Billboard</span><span class="chip c2">Display Ad</span>
+  <!-- SVC 01: POSTER DESIGN -->
+  <div class="svc-sticky-wrap" id="poster">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">01 / 07</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">Poster</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
+          <div class="svc-big-title-num">01</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">01 / 07 — Poster Design</div>
+            <p class="svc-big-desc-text">Eye-catching posters that speak louder than words. Bold compositions, sharp
+              typography, killer visuals.</p>
+            <div class="svc-big-chips">
+              <span class="chip">Event Poster</span><span class="chip">Brand Poster</span><span class="chip">Social
+                Media</span><span class="chip">Print</span>
+            </div>
           </div>
         </div>
+        <div class="svc-big-rule"></div>
       </div>
-      <div class="svc-big-rule"></div>
     </div>
-  </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">Banner Design — Work Samples</div>
-            <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">02 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-banner">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-banner">
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/banner 1.jpg" alt="Banner 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 2.jpg" alt="Banner 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 3.jpg" alt="Banner 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 4.jpg" alt="Banner 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 5.jpg" alt="Banner 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 6.jpg" alt="Banner 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 7.jpg" alt="Banner 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 8.jpg" alt="Banner 8" loading="lazy"></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/banner 9.jpg" alt="Banner 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 10.jpg" alt="Banner 10" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 12.jpg" alt="Banner 12" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/banner 13.jpg" alt="Banner 13" loading="lazy"></div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Poster Design — Work Samples</div>
+              <div class="saf-tag">09 / 09</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-poster">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-poster">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/poster 1.jpg" alt="Poster 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 2.jpg" alt="Poster 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 3.jpg" alt="Poster 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 4.jpg" alt="Poster 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 5.jpg" alt="Poster 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 6.jpg" alt="Poster 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 7.jpg" alt="Poster 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 8.jpg" alt="Poster 8" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/poster 9.jpg" alt="Poster 9" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 10.jpg" alt="Poster 10" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 11.jpg" alt="Poster 11" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 12.jpg" alt="Poster 12" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 13.jpg" alt="Poster 13" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 14.jpg" alt="Poster 14" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 15.jpg" alt="Poster 15" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 16.jpg" alt="Poster 16" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/poster 17.jpg" alt="Poster 17" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 18.jpg" alt="Poster 18" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 19.jpg" alt="Poster 19" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 20.jpg" alt="Poster 20" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 21.jpg" alt="Poster 21" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 22.jpg" alt="Poster 22" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 23.jpg" alt="Poster 23" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 24.jpg" alt="Poster 24" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/poster 25.jpg" alt="Poster 25" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 26.jpg" alt="Poster 26" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 27.jpg" alt="Poster 27" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 28.jpg" alt="Poster 28" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 29.jpg" alt="Poster 29" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 30.jpg" alt="Poster 30" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 31.jpg" alt="Poster 31" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 32.jpg" alt="Poster 32" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/poster 33.jpg" alt="Poster 33" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 34.jpg" alt="Poster 34" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 35.jpg" alt="Poster 35" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 36.jpg" alt="Poster 36" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 37.jpg" alt="Poster 37" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 38.jpg" alt="Poster 38" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 39.jpg" alt="Poster 39" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 40.jpg" alt="Poster 40" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/poster 41.jpg" alt="Poster 41" loading="lazy"></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-banner-prev" onclick="afPrev('banner')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-banner"></div>
-                <button class="af-btn" id="afb-banner-next" onclick="afNext('banner')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- SVC 03: LOGO & BRANDING -->
-<div class="svc-sticky-wrap" id="logo">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">03 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">Logo &</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Brand</span></div>
-        <div class="svc-big-title-num">03</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">03 / 07 — Logo & Branding</div>
-          <p class="svc-big-desc-text">A brand is more than a logo — it's a feeling. Complete identities that are memorable and timeless.</p>
-          <div class="svc-big-chips">
-            <span class="chip c2">Logo Design</span><span class="chip c2">Business Card</span><span class="chip c2">Brand Kit</span><span class="chip c2">Style Guide</span>
-          </div>
-        </div>
-      </div>
-      <div class="svc-big-rule"></div>
-    </div>
-  </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">Logo & Branding — Work Samples</div>
-            <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">03 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-logo">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-logo">
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/logo 1.jpg" alt="Logo 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 2.jpg" alt="Logo 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 3.jpg" alt="Logo 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 4.jpg" alt="Logo 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 5.jpg" alt="Logo 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 6.jpg" alt="Logo 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 7.jpg" alt="Logo 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 8.jpg" alt="Logo 8" loading="lazy"></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/logo 9.jpg" alt="Logo 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/logo 10.jpg" alt="Logo 10" loading="lazy"></div>
-                  </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-poster-prev" onclick="afPrev('poster')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-poster"></div>
+                  <button class="af-btn" id="afb-poster-next" onclick="afNext('poster')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-logo-prev" onclick="afPrev('logo')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-logo"></div>
-                <button class="af-btn" id="afb-logo-next" onclick="afNext('logo')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- SVC 04: VIDEO EDITING -->
-<div class="svc-sticky-wrap" id="video">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">04 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">Video</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Editing</span></div>
-        <div class="svc-big-title-num">04</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">04 / 07 — Video Editing</div>
-          <p class="svc-big-desc-text">Cinematic cuts, smooth transitions, color grading that transforms raw footage into compelling stories.</p>
-          <div class="svc-big-chips">
-            <span class="chip c3">Reels</span><span class="chip c3">Ads</span><span class="chip c3">Color Grade</span><span class="chip c3">VFX</span><span class="chip c3">YouTube</span>
+      <div class="svc-content-inner" style="padding:0 18px 60px;display:none;" id="mob-poster">
+        <div class="svc-mobile-header">
+          <div class="svc-mobile-num">01</div>
+          <div class="svc-mobile-info">
+            <div class="svc-mobile-eyebrow">01 / 07</div>
+            <div class="svc-mobile-title"
+              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+              Poster Design</div>
           </div>
         </div>
       </div>
-      <div class="svc-big-rule"></div>
     </div>
   </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">Video Editing — Work Samples</div>
-            <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">04 / 07</div>
+
+  <!-- SVC 02: BANNER DESIGN -->
+  <div class="svc-sticky-wrap" id="banner">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">02 / 07</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">Banner</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
+          <div class="svc-big-title-num">02</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">02 / 07 — Banner Design</div>
+            <p class="svc-big-desc-text">Stunning banners for digital and print — web banners, social ads, outdoor
+              billboards.</p>
+            <div class="svc-big-chips">
+              <span class="chip c2">Web Banner</span><span class="chip c2">Social Ad</span><span
+                class="chip c2">Billboard</span><span class="chip c2">Display Ad</span>
+            </div>
           </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-video">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-video">
-                  <div class="af-page">
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video1.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video2.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video3.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video4.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video5.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video6.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video7.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video8.mp4" type="video/mp4"></video></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video9.mp4" type="video/mp4"></video></div>
-                    <div class="af-item"><video autoplay muted loop playsinline><source src="assets/video10.mp4" type="video/mp4"></video></div>
+        </div>
+        <div class="svc-big-rule"></div>
+      </div>
+    </div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Banner Design — Work Samples</div>
+              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">02 / 07</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-banner">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-banner">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/banner 1.jpg" alt="Banner 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 2.png" alt="Banner 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 3.jpg" alt="Banner 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 4.jpg" alt="Banner 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 5.jpg" alt="Banner 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 6.jpg" alt="Banner 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 7.jpg" alt="Banner 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 8.jpg" alt="Banner 8" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 9.jpg" alt="Banner 9" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/banner 10.jpg" alt="Banner 10" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 11.jpg" alt="Banner 11" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 12.jpg" alt="Banner 12" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 13.jpg" alt="Banner 13" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 14.jpg" alt="Banner 14" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/banner 15.jpg" alt="Banner 15" loading="lazy"></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-video-prev" onclick="afPrev('video')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-video"></div>
-                <button class="af-btn" id="afb-video-next" onclick="afNext('video')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SVC 05: UI/UX -->
-<div class="svc-sticky-wrap" id="uiux">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">05 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">UI & UX</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-        <div class="svc-big-title-num">05</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">05 / 07 — UI/UX Design</div>
-          <p class="svc-big-desc-text">Interfaces that feel as good as they look. From wireframe to pixel-perfect screens.</p>
-          <div class="svc-big-chips">
-            <span class="chip c3">App Design</span><span class="chip c3">Web Design</span><span class="chip c3">Wireframe</span><span class="chip c3">Prototype</span>
-          </div>
-        </div>
-      </div>
-      <div class="svc-big-rule"></div>
-    </div>
-  </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">UI/UX Design — Work Samples</div>
-            <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">05 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-uiux">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-uiux">
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/uiux 1.jpg" alt="UIUX 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 2.jpg" alt="UIUX 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 3.jpg" alt="UIUX 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 4.jpg" alt="UIUX 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 5.jpg" alt="UIUX 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 6.jpg" alt="UIUX 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 7.jpg" alt="UIUX 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 8.jpg" alt="UIUX 8" loading="lazy"></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/uiux 9.jpg" alt="UIUX 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/uiux 10.jpg" alt="UIUX 10" loading="lazy"></div>
-                  </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-banner-prev" onclick="afPrev('banner')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-banner"></div>
+                  <button class="af-btn" id="afb-banner-next" onclick="afNext('banner')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-uiux-prev" onclick="afPrev('uiux')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-uiux"></div>
-                <button class="af-btn" id="afb-uiux-next" onclick="afNext('uiux')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- SVC 06: LOTTIE & MOTION -->
-<div class="svc-sticky-wrap" id="lottie">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">06 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">Lottie &</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">Motion</span></div>
-        <div class="svc-big-title-num">06</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">06 / 07 — Motion & Lottie</div>
-          <p class="svc-big-desc-text">Bringing UI to life with smooth Lottie animations. Loading screens, icon animations, app transitions.</p>
-          <div class="svc-big-chips">
-            <span class="chip">Lottie Files</span><span class="chip">After Effects</span><span class="chip">Rive</span><span class="chip">UI Motion</span>
+  <!-- SVC 03: LOGO & BRANDING -->
+  <div class="svc-sticky-wrap" id="logo">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">03 / 07</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">Logo &</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Brand</span></div>
+          <div class="svc-big-title-num">03</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">03 / 07 — Logo & Branding</div>
+            <p class="svc-big-desc-text">A brand is more than a logo — it's a feeling. Complete identities that are
+              memorable and timeless.</p>
+            <div class="svc-big-chips">
+              <span class="chip c2">Logo Design</span><span class="chip c2">Business Card</span><span
+                class="chip c2">Brand Kit</span><span class="chip c2">Style Guide</span>
+            </div>
           </div>
         </div>
+        <div class="svc-big-rule"></div>
       </div>
-      <div class="svc-big-rule"></div>
     </div>
-  </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">Lottie & Motion — Work Samples</div>
-            <div class="saf-tag">06 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-lottie">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-lottie">
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/lottie1.jpg" alt="Lottie 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie2.jpg" alt="Lottie 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie3.jpg" alt="Lottie 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie4.jpg" alt="Lottie 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie5.jpg" alt="Lottie 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie6.jpg" alt="Lottie 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie7.jpg" alt="Lottie 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie8.jpg" alt="Lottie 8" loading="lazy"></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/lottie9.jpg" alt="Lottie 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/lottie10.jpg" alt="Lottie 10" loading="lazy"></div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Logo & Branding — Work Samples</div>
+              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">03 / 07</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-logo">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-logo">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/logo 1.png" alt="Logo 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 2.png" alt="Logo 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 3.png" alt="Logo 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 4.png" alt="Logo 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 5.png" alt="Logo 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 6.png" alt="Logo 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 7.png" alt="Logo 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/logo 8.png" alt="Logo 8" loading="lazy"></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-lottie-prev" onclick="afPrev('lottie')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-lottie"></div>
-                <button class="af-btn" id="afb-lottie-next" onclick="afNext('lottie')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SVC 07: AI ART -->
-<div class="svc-sticky-wrap" id="ai">
-  <div class="svc-sticky-height">
-    <div class="svc-sticky-pin">
-      <div class="svc-curtain-top"></div>
-      <div class="svc-curtain-bottom"></div>
-      <div class="svc-scanline"></div>
-      <div class="svc-bg-glow"></div>
-      <div class="svc-corner tl"></div><div class="svc-corner tr"></div>
-      <div class="svc-corner bl"></div><div class="svc-corner br"></div>
-      <div class="svc-index-tag">07 / 07</div>
-      <div class="svc-big-title">
-        <div class="svc-title-clip"><span class="svc-big-title-text">AI Art</span></div>
-        <div class="svc-title-clip"><span class="svc-big-title-text">& Design</span></div>
-        <div class="svc-big-title-num">07</div>
-      </div>
-      <div class="svc-big-meta">
-        <div class="svc-big-desc-col">
-          <div class="svc-big-eyebrow">07 / 07 — AI Art & Design</div>
-          <p class="svc-big-desc-text">Pushing creative boundaries with AI-assisted design — concept art, product visuals, brand imagery.</p>
-          <div class="svc-big-chips">
-            <span class="chip">Midjourney</span><span class="chip">Stable Diffusion</span><span class="chip">AI Product</span><span class="chip">Concept Art</span>
-          </div>
-        </div>
-      </div>
-      <div class="svc-big-rule"></div>
-    </div>
-  </div>
-  <div class="svc-content-block">
-    <div class="section-apple-wrap">
-      <div class="section-apple-sticky">
-        <div class="section-apple-frame">
-          <div class="saf-topbar">
-            <div class="saf-dots"><div class="saf-dot"></div><div class="saf-dot"></div><div class="saf-dot"></div></div>
-            <div class="saf-title">AI Art & Design — Work Samples</div>
-            <div class="saf-tag">07 / 07</div>
-          </div>
-          <div class="saf-body">
-            <div class="af-carousel" id="afc-ai">
-              <div class="af-carousel-viewport">
-                <div class="af-track" id="aft-ai">
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/ai 1.jpg" alt="AI 1" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 2.jpg" alt="AI 2" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 3.jpg" alt="AI 3" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 4.jpg" alt="AI 4" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 5.jpg" alt="AI 5" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 6.jpg" alt="AI 6" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 7.jpg" alt="AI 7" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 8.jpg" alt="AI 8" loading="lazy"></div>
-                  </div>
-                  <div class="af-page">
-                    <div class="af-item"><img src="assets/ai 9.jpg" alt="AI 9" loading="lazy"></div>
-                    <div class="af-item"><img src="assets/ai 10.jpg" alt="AI 10" loading="lazy"></div>
-                  </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-logo-prev" onclick="afPrev('logo')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-logo"></div>
+                  <button class="af-btn" id="afb-logo-next" onclick="afNext('logo')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="af-footer">
-                <button class="af-btn" id="afb-ai-prev" onclick="afPrev('ai')">
-                  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <div class="af-dots-wrap" id="afd-ai"></div>
-                <button class="af-btn" id="afb-ai-next" onclick="afNext('ai')">
-                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVC 04: VIDEO EDITING -->
+  <div class="svc-sticky-wrap" id="video">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">04 / 07</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">Video</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Editing</span></div>
+          <div class="svc-big-title-num">04</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">04 / 07 — Video Editing</div>
+            <p class="svc-big-desc-text">Cinematic cuts, smooth transitions, color grading that transforms raw footage
+              into compelling stories.</p>
+            <div class="svc-big-chips">
+              <span class="chip c3">Reels</span><span class="chip c3">Ads</span><span class="chip c3">Color
+                Grade</span><span class="chip c3">VFX</span><span class="chip c3">YouTube</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-big-rule"></div>
+      </div>
+    </div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Video Editing — Work Samples</div>
+              <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">04 / 07</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-video">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-video">
+                    <div class="af-page">
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video1.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video2.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video3.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video4.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video5.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video6.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video7.mp4" type="video/mp4">
+                        </video></div>
+                      <div class="af-item"><video autoplay muted loop playsinline>
+                          <source src="assets/video8.mp4" type="video/mp4">
+                        </video></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-video-prev" onclick="afPrev('video')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-video"></div>
+                  <button class="af-btn" id="afb-video-next" onclick="afNext('video')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1261,402 +569,504 @@ input[type=file]{display:none;}
       </div>
     </div>
   </div>
-</div>
 
-<!-- 3D PACKAGING -->
-<section class="pkg-section" id="packaging">
-  <div class="pkg-inner">
-    <div class="pkg-text">
-      <div class="sec-label reveal">08 / 08 — Packaging Design</div>
-      <h2 class="pkg-title reveal rd1">3D Packaging<br><span>Mockups</span></h2>
-      <p class="pkg-desc reveal rd2">Drag the box to rotate 360° in any direction. Upload your own packaging image to each face and see it come alive.</p>
-      <div class="pkg-hint reveal rd2">
-        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2v4m0 12v4M2 12h4m12 0h4M6.34 6.34l2.83 2.83m5.66 5.66l2.83 2.83M6.34 17.66l2.83-2.83m5.66-5.66l2.83-2.83"/></svg>
-        Drag to Rotate 360°
-      </div>
-      <div class="chips reveal rd3">
-        <span class="chip">Box Design</span><span class="chip">Label Design</span><span class="chip">3D Mockup</span><span class="chip">360° View</span>
-      </div>
-      <div class="face-upload-row reveal rd3" id="face-btns" style="margin-top:20px;"></div>
-    </div>
-    <div class="pkg-viewer reveal rd2">
-      <div class="viewer-wrap">
-        <div class="box-glow"></div>
-        <div id="pkg3d">
-          <div class="face f-front" id="f-front"><div class="fp"><span class="fi-icon">📦</span>Front</div></div>
-          <div class="face f-back"  id="f-back" ><div class="fp"><span class="fi-icon">📦</span>Back</div></div>
-          <div class="face f-right" id="f-right"><div class="fp"><span class="fi-icon">📦</span>Right</div></div>
-          <div class="face f-left"  id="f-left" ><div class="fp"><span class="fi-icon">📦</span>Left</div></div>
-          <div class="face f-top"   id="f-top"  ><div class="fp"><span class="fi-icon">⬆</span>Top</div></div>
-          <div class="face f-bottom" id="f-bottom"><div class="fp"><span class="fi-icon">⬇</span>Bottom</div></div>
+  <!-- SVC 05: UI/UX -->
+  <div class="svc-sticky-wrap" id="uiux">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">05 / 07</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">UI & UX</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
+          <div class="svc-big-title-num">05</div>
         </div>
-        <div class="drag-hint">Drag to rotate</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-section">
-  <div class="stats-inner">
-    <div class="stat reveal"><div class="stat-n" data-count="200">0</div><div class="stat-l">Projects Done</div></div>
-    <div class="stat reveal rd1"><div class="stat-n" data-count="80">0</div><div class="stat-l">Happy Clients</div></div>
-    <div class="stat reveal rd2"><div class="stat-n" data-count="5">0</div><div class="stat-l">Years Experience</div></div>
-    <div class="stat reveal rd3"><div class="stat-n" data-count="99">0</div><div class="stat-l">% Satisfaction</div></div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-section">
-    <div class="contact-inner">
-      <div class="sec-label reveal">Ready to start?</div>
-      <div class="contact-big reveal rd1"><span class="cw">LET'S</span><br><span class="cg">WORK</span></div>
-      <div class="cform reveal rd2">
-        <div class="f2col">
-          <input type="text" class="fi" placeholder="Your Name" id="cf-name">
-          <input type="email" class="fi" placeholder="Email Address" id="cf-email">
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">05 / 07 — UI/UX Design</div>
+            <p class="svc-big-desc-text">Interfaces that feel as good as they look. From wireframe to pixel-perfect
+              screens.</p>
+            <div class="svc-big-chips">
+              <span class="chip c3">App Design</span><span class="chip c3">Web Design</span><span
+                class="chip c3">Wireframe</span><span class="chip c3">Prototype</span>
+            </div>
+          </div>
         </div>
-        <input type="text" class="fi" style="margin-bottom:14px;" placeholder="Service (Poster, Logo, Video, UI...)" id="cf-service">
-        <textarea class="fi" placeholder="Tell me about your project..." id="cf-msg"></textarea>
-        <button class="fbtn" onclick="submitForm()">Send Message →</button>
-        <div id="cf-status" style="margin-top:12px;font-size:.82rem;text-align:center;color:var(--g1);display:none;"></div>
+        <div class="svc-big-rule"></div>
+      </div>
+    </div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">UI/UX Design — Work Samples</div>
+              <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">05 / 07</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-uiux">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-uiux">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/uiux 1.jpg" alt="UIUX 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 2.jpg" alt="UIUX 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 3.jpg" alt="UIUX 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 4.jpg" alt="UIUX 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 5.jpg" alt="UIUX 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 6.jpg" alt="UIUX 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 7.jpg" alt="UIUX 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 8.jpg" alt="UIUX 8" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/uiux 9.jpg" alt="UIUX 9" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/uiux 10.jpg" alt="UIUX 10" loading="lazy"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-uiux-prev" onclick="afPrev('uiux')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-uiux"></div>
+                  <button class="af-btn" id="afb-uiux-next" onclick="afNext('uiux')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<footer>
-  <div class="fc">© 2026 Noor Ahmed · All Rights Reserved</div>
-  <div class="socials">
-    <a href="https://twitter.com/" target="_blank" class="soc">𝕏</a>
-    <a href="https://behance.net/" target="_blank" class="soc">Be</a>
-    <a href="https://dribbble.com/" target="_blank" class="soc">Dr</a>
-    <a href="https://linkedin.com/" target="_blank" class="soc">in</a>
+  <!-- SVC 06: LOTTIE & MOTION -->
+  <div class="svc-sticky-wrap" id="lottie">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">06 / 09</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text">Lottie &</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text">Motion</span></div>
+          <div class="svc-big-title-num">06</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">06 / 09 — Motion & Lottie</div>
+            <p class="svc-big-desc-text">Bringing UI to life with smooth Lottie animations. Loading screens, icon
+              animations, app transitions.</p>
+            <div class="svc-big-chips">
+              <span class="chip">Lottie Files</span><span class="chip">After Effects</span><span
+                class="chip">Rive</span><span class="chip">UI Motion</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-big-rule"></div>
+      </div>
+    </div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Lottie & Motion — Work Samples</div>
+              <div class="saf-tag">06 / 09</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-lottie">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-lottie">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/lottie1.gif" alt="Lottie 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie2.gif" alt="Lottie 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie3.gif" alt="Lottie 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie4.gif" alt="Lottie 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie5.gif" alt="Lottie 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie6.gif" alt="Lottie 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie7.gif" alt="Lottie 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie8.gif" alt="Lottie 8" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/lottie9.gif" alt="Lottie 9" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie10.gif" alt="Lottie 10" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie11.gif" alt="Lottie 11" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/lottie12.gif" alt="Lottie 12" loading="lazy"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-lottie-prev" onclick="afPrev('lottie')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-lottie"></div>
+                  <button class="af-btn" id="afb-lottie-next" onclick="afNext('lottie')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <button id="lb-close" onclick="lbClose()">✕</button>
-  <button id="lb-prev" onclick="lbNav(-1)">‹</button>
-  <div id="lb-media"></div>
-  <button id="lb-next" onclick="lbNav(1)">›</button>
-  <div id="lb-counter"></div>
-  <div id="lb-dots"></div>
-</div>
 
-<script>
-// ─── HAMBURGER ───────────────────────────────────────────
-function toggleMenu(){
-  const ham=document.getElementById('hamburger');
-  const links=document.getElementById('nav-links');
-  const overlay=document.getElementById('mob-overlay');
-  ham.classList.toggle('open');links.classList.toggle('open');overlay.classList.toggle('show');
-  document.body.style.overflow=links.classList.contains('open')?'hidden':'';
-}
-function closeMenu(){
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('nav-links').classList.remove('open');
-  document.getElementById('mob-overlay').classList.remove('show');
-  document.body.style.overflow='';
-}
+  <!-- SVC 07: INVOICE CARD & LETTERHEAD -->
+  <div class="svc-sticky-wrap" id="invoice">
+    <div class="svc-sticky-height">
+      <div class="svc-sticky-pin">
+        <div class="svc-curtain-top"></div>
+        <div class="svc-curtain-bottom"></div>
+        <div class="svc-scanline"></div>
+        <div class="svc-bg-glow"></div>
+        <div class="svc-corner tl"></div>
+        <div class="svc-corner tr"></div>
+        <div class="svc-corner bl"></div>
+        <div class="svc-corner br"></div>
+        <div class="svc-index-tag">07 / 09</div>
+        <div class="svc-big-title">
+          <div class="svc-title-clip"><span class="svc-big-title-text"
+              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Invoice
+              &</span></div>
+          <div class="svc-title-clip"><span class="svc-big-title-text"
+              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Letterhead</span>
+          </div>
+          <div class="svc-big-title-num">07</div>
+        </div>
+        <div class="svc-big-meta">
+          <div class="svc-big-desc-col">
+            <div class="svc-big-eyebrow">07 / 09 — Invoice Card & Letterhead</div>
+            <p class="svc-big-desc-text">Professional business documents that establish credibility. Custom invoice
+              cards, letterheads, and stationery designs.</p>
+            <div class="svc-big-chips">
+              <span class="chip">Invoice Card</span><span class="chip">Letterhead</span><span class="chip">Envelope
+                Design</span><span class="chip">Stationery</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-big-rule"></div>
+      </div>
+    </div>
+    <div class="svc-content-block">
+      <div class="section-apple-wrap">
+        <div class="section-apple-sticky">
+          <div class="section-apple-frame">
+            <div class="saf-topbar">
+              <div class="saf-dots">
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+                <div class="saf-dot"></div>
+              </div>
+              <div class="saf-title">Invoice Card & Letterhead — Work Samples</div>
+              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">07 / 09</div>
+            </div>
+            <div class="saf-body">
+              <div class="af-carousel" id="afc-invoice">
+                <div class="af-carousel-viewport">
+                  <div class="af-track" id="aft-invoice">
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/invoice 1.jpg" alt="Invoice 1" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 2.png" alt="Invoice 2" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 3.png" alt="Invoice 3" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 4.png" alt="Invoice 4" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 5.png" alt="Invoice 5" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 6.png" alt="Invoice 6" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 7.png" alt="Invoice 7" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 8.png" alt="Invoice 8" loading="lazy"></div>
+                    </div>
+                    <div class="af-page">
+                      <div class="af-item"><img src="assets/invoice 9.png" alt="Invoice 9" loading="lazy"></div>
+                      <div class="af-item"><img src="assets/invoice 10.png" alt="Invoice 10" loading="lazy"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="af-footer">
+                  <button class="af-btn" id="afb-invoice-prev" onclick="afPrev('invoice')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <div class="af-dots-wrap" id="afd-invoice"></div>
+                  <button class="af-btn" id="afb-invoice-next" onclick="afNext('invoice')">
+                    <svg viewBox="0 0 24 24">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-// ─── INTRO ───────────────────────────────────────────────
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    const i=document.getElementById('intro');
-    i.style.transition='opacity .85s ease,transform .85s ease';
-    i.style.opacity='0';i.style.transform='scale(1.04)';
-    setTimeout(()=>i.style.display='none',880);
-  },2500);
-});
+  <!-- MOBILE APP SHOWCASE -->
+  <section class="app-section" id="app">
+    <div class="app-inner">
+      <div class="app-left">
+        <div class="sec-label reveal">08 / 09 — Mobile App</div>
+        <h2 class="app-title reveal rd1">App Screen<br><span>Gallery</span></h2>
+        <p class="app-desc reveal rd2">Beautiful mobile interfaces showcasing complete user experiences and design
+          excellence across iOS applications.</p>
+      </div>
 
-// ─── PARTICLES ───────────────────────────────────────────
-(function(){
-  const wrap=document.getElementById('hero-particles');if(!wrap)return;
-  const colors=['rgba(168,85,247,.5)','rgba(236,72,153,.4)','rgba(6,182,212,.35)','rgba(249,115,22,.3)'];
-  for(let i=0;i<22;i++){
-    const p=document.createElement('div');p.className='hp';
-    const size=Math.random()*3+1.5,dur=Math.random()*12+10,delay=Math.random()*15,left=Math.random()*100;
-    p.style.cssText=`width:${size}px;height:${size}px;left:${left}%;bottom:-20px;background:${colors[Math.floor(Math.random()*colors.length)]};box-shadow:0 0 ${size*3}px ${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${dur}s;animation-delay:-${delay}s;`;
-    wrap.appendChild(p);
-  }
-})();
+      <div class="app-right">
+        <!-- CARGET APP - HORIZONTAL CAROUSEL -->
+        <div class="app-group reveal rd3">
+          <div class="app-category-label">CarGet</div>
+          <div class="carousel-section">
+            <div class="carousel-track" id="cargetCarousel">
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/1.png" alt="CarGet 1">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/2.png" alt="CarGet 2">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/3.png" alt="CarGet 3">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/4.png" alt="CarGet 4">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/5.png" alt="CarGet 5">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/6.png" alt="CarGet 6">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-fade-left"></div>
+            <div class="carousel-fade-right"></div>
+          </div>
+        </div>
 
-// ─── CURSOR ──────────────────────────────────────────────
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-if(cur){
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';curR.style.width='52px';curR.style.height='52px';});
-    el.addEventListener('mouseleave',()=>{cur.style.width='9px';cur.style.height='9px';curR.style.width='34px';curR.style.height='34px';});
-  });
-}
+        <!-- OTOZ.AI APP - HORIZONTAL CAROUSEL -->
+        <div class="app-group reveal rd3">
+          <div class="app-category-label">Otoz.ai</div>
+          <div class="carousel-section">
+            <div class="carousel-track" id="otozCarousel">
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/7.png" alt="Otoz 1">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/8.png" alt="Otoz 2">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/11.png" alt="Otoz 3">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/22.png" alt="Otoz 4">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/33.png" alt="Otoz 5">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/44.png" alt="Otoz 6">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/55.png" alt="Otoz 7">
+                </div>
+              </div>
+              <div class="carousel-card">
+                <div class="card-inner">
+                  <img src="assets/66.png" alt="Otoz 8">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-fade-left"></div>
+            <div class="carousel-fade-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-// ─── APPLE SCROLL — ABOUT ME ─────────────────────────────
-(function(){
-  const section=document.querySelector('.apple-scroll-section');
-  const frame=document.getElementById('apple-frame');
-  const aoContent=document.getElementById('ao-content');
-  if(!section||!frame)return;
-  function lerp(a,b,t){return a+(b-a)*t;}
-  function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v));}
-  function ease(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
-  function updateAppleAbout(){
-    if(window.innerWidth<=767){frame.style.transform='';frame.style.borderRadius='';frame.style.opacity='';return;}
-    const rect=section.getBoundingClientRect();
-    const total=section.offsetHeight-window.innerHeight;
-    const p=clamp(-rect.top/total,0,1);
-    const shrinkStart=0.45;
-    const shrinkP=clamp((p-shrinkStart)/(1-shrinkStart),0,1);
-    const easedShrink=ease(shrinkP);
-    const scale=lerp(1,0.72,easedShrink);
-    const radius=lerp(0,28,easedShrink);
-    const opacityFadeStart=0.6;
-    const opacityP=clamp((p-opacityFadeStart)/(1-opacityFadeStart),0,1);
-    const opacity=lerp(1,0,opacityP);
-    frame.style.transform=`scale(${scale})`;
-    frame.style.borderRadius=`${radius}px`;
-    frame.style.opacity=opacity;
-    if(p>0.12&&p<0.44)aoContent.classList.add('show');
-    else aoContent.classList.remove('show');
-  }
-  window.addEventListener('scroll',updateAppleAbout,{passive:true});
-  updateAppleAbout();
-})();
+  <!-- 3D PACKAGING -->
+  <section class="pkg-section" id="packaging">
+    <div class="pkg-inner">
+      <div class="pkg-text">
+        <div class="sec-label reveal">09 / 09 — Packaging Design</div>
+        <h2 class="pkg-title reveal rd1">3D Packaging<br><span>Mockups</span></h2>
+        <p class="pkg-desc reveal rd2">Drag the box to rotate 360° in any direction. Upload your own packaging image to
+          each face and see it come alive.</p>
+        <div class="pkg-hint reveal rd2">
+          <svg viewBox="0 0 24 24" stroke-width="2">
+            <path
+              d="M12 2v4m0 12v4M2 12h4m12 0h4M6.34 6.34l2.83 2.83m5.66 5.66l2.83 2.83M6.34 17.66l2.83-2.83m5.66-5.66l2.83-2.83" />
+          </svg>
+          Drag to Rotate 360°
+        </div>
+        <div class="chips reveal rd3">
+          <span class="chip">Box Design</span><span class="chip">Label Design</span><span class="chip">3D
+            Mockup</span><span class="chip">360° View</span>
+        </div>
+        <div class="face-upload-row reveal rd3" id="face-btns" style="margin-top:20px;"></div>
+      </div>
+      <div class="pkg-viewer reveal rd2">
+        <div class="viewer-wrap">
+          <div class="box-glow"></div>
+          <div id="pkg3d">
+            <div class="face f-front" id="f-front">
+              <div class="fp"><span class="fi-icon">📦</span>Front</div>
+            </div>
+            <div class="face f-back" id="f-back">
+              <div class="fp"><span class="fi-icon">📦</span>Back</div>
+            </div>
+            <div class="face f-right" id="f-right">
+              <div class="fp"><span class="fi-icon">📦</span>Right</div>
+            </div>
+            <div class="face f-left" id="f-left">
+              <div class="fp"><span class="fi-icon">📦</span>Left</div>
+            </div>
+            <div class="face f-top" id="f-top">
+              <div class="fp"><span class="fi-icon">⬆</span>Top</div>
+            </div>
+            <div class="face f-bottom" id="f-bottom">
+              <div class="fp"><span class="fi-icon">⬇</span>Bottom</div>
+            </div>
+          </div>
+          <div class="drag-hint">Drag to rotate</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-// ─── SVC CINEMATIC ANIMATION ENGINE ──────────────────────
-(function(){
-  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-  function lerp(a,b,t){return a+(b-a)*t;}
-  function easeOut(t){return 1-Math.pow(1-t,3);}
-  function easeInOut(t){return t<0.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1;}
-  const wraps=document.querySelectorAll('.svc-sticky-wrap');
-  let scanlineAnimating={};
-  function runScanline(wrap,id){
-    if(scanlineAnimating[id])return;
-    scanlineAnimating[id]=true;
-    const sl=wrap.querySelector('.svc-scanline');
-    if(!sl)return;
-    sl.style.opacity='1';sl.style.left='0';
-    const dur=900,start=performance.now();
-    function anim(now){
-      const t=Math.min((now-start)/dur,1);
-      sl.style.left=(t*100)+'%';
-      if(t<1){requestAnimationFrame(anim);}
-      else{sl.style.opacity='0';sl.style.left='0';setTimeout(()=>{scanlineAnimating[id]=false;},800);}
-    }
-    requestAnimationFrame(anim);
-  }
-  wraps.forEach((wrap,i)=>{
-    const id=wrap.id||i;
-    const stickyH=wrap.querySelector('.svc-sticky-height');
-    const pin=wrap.querySelector('.svc-sticky-pin');
-    const curtainTop=wrap.querySelector('.svc-curtain-top');
-    const curtainBot=wrap.querySelector('.svc-curtain-bottom');
-    if(!stickyH||!pin)return;
-    let wasActive=false;
-    function update(){
-      const rect=stickyH.getBoundingClientRect();
-      const wh=window.innerHeight;
-      const total=stickyH.offsetHeight-wh;
-      const p=clamp(-rect.top/total,0,1);
-      const isActive=rect.top<=0&&rect.bottom>=wh*0.1;
-      if(isActive&&!wasActive){wrap.classList.add('svc-active');runScanline(wrap,id);wasActive=true;}
-      if(!isActive){wrap.classList.remove('svc-active');wasActive=false;}
-      if(window.innerWidth<=767){
-        if(curtainTop)curtainTop.style.transform='';
-        if(curtainBot)curtainBot.style.transform='';
-        pin.style.opacity='';return;
-      }
-      const openP=clamp(p/0.35,0,1);
-      const openEased=easeOut(openP);
-      const closeStart=0.58,closeEnd=0.88;
-      const closeP=clamp((p-closeStart)/(closeEnd-closeStart),0,1);
-      const closeEased=easeInOut(closeP);
-      let topY,botY;
-      if(p<=closeStart){topY=lerp(0,-100,openEased);botY=lerp(0,100,openEased);}
-      else{topY=lerp(-100,0,closeEased);botY=lerp(100,0,closeEased);}
-      if(curtainTop)curtainTop.style.transform=`translateY(${topY}%)`;
-      if(curtainBot)curtainBot.style.transform=`translateY(${botY}%)`;
-      const pinOpacity=lerp(1,0,clamp((p-closeEnd)/(1-closeEnd),0,1));
-      pin.style.opacity=pinOpacity;
-    }
-    wrap._update=update;
-  });
-  function tick(){wraps.forEach(w=>{if(w._update)w._update();});}
-  window.addEventListener('scroll',tick,{passive:true});
-  tick();
-})();
+  <!-- APP LIGHTBOX/MODAL -->
+  <div id="appModal" class="app-modal">
+    <button class="modal-close" onclick="closeAppModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="appModalNav(-1)">‹</button>
+    <div class="modal-content">
+      <img id="modalImg" src="" alt="App Screen">
+    </div>
+    <button class="modal-nav modal-next" onclick="appModalNav(1)">›</button>
+    <div class="modal-counter" id="modalCounter"></div>
+  </div>
 
-// ─── SCROLL REVEAL ───────────────────────────────────────
-const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-inner">
+      <div class="stat reveal">
+        <div class="stat-n" data-count="200">0</div>
+        <div class="stat-l">Projects Done</div>
+      </div>
+      <div class="stat reveal rd1">
+        <div class="stat-n" data-count="80">0</div>
+        <div class="stat-l">Happy Clients</div>
+      </div>
+      <div class="stat reveal rd2">
+        <div class="stat-n" data-count="5">0</div>
+        <div class="stat-l">Years Experience</div>
+      </div>
+      <div class="stat reveal rd3">
+        <div class="stat-n" data-count="99">0</div>
+        <div class="stat-l">% Satisfaction</div>
+      </div>
+    </div>
+  </div>
 
-// ─── COUNT UP ────────────────────────────────────────────
-document.querySelectorAll('[data-count]').forEach(el=>{
-  new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting)return;
-      const t=+e.target.dataset.count;let c=0;
-      const ti=setInterval(()=>{c=Math.min(c+t/55,t);e.target.textContent=Math.floor(c)+(t===99?'%':'+');if(c>=t)clearInterval(ti);},16);
-    });
-  },{threshold:.5}).observe(el);
-});
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-section">
+      <div class="contact-inner">
+        <div class="sec-label reveal">Ready to start?</div>
+        <div class="contact-big reveal rd1"><span class="cw">LET'S</span><br><span class="cg">WORK</span></div>
+        <div class="cform reveal rd2">
+          <div class="f2col">
+            <input type="text" class="fi" placeholder="Your Name" id="cf-name">
+            <input type="email" class="fi" placeholder="Email Address" id="cf-email">
+          </div>
+          <input type="text" class="fi" style="margin-bottom:14px;" placeholder="Service (Poster, Logo, Video, UI...)"
+            id="cf-service">
+          <textarea class="fi" placeholder="Tell me about your project..." id="cf-msg"></textarea>
+          <button class="fbtn" onclick="submitForm()">Send Message →</button>
+          <div id="cf-status" style="margin-top:12px;font-size:.82rem;text-align:center;color:var(--g1);display:none;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-// ─── CAROUSEL ENGINE ─────────────────────────────────────
-const afState={};
-const afIds=['poster','banner','logo','video','uiux','lottie','ai'];
-afIds.forEach(id=>{
-  const track=document.getElementById('aft-'+id);
-  if(!track)return;
-  const pages=Array.from(track.querySelectorAll('.af-page'));
-  afState[id]={current:0,total:pages.length};
-  const dotsWrap=document.getElementById('afd-'+id);
-  if(dotsWrap){
-    dotsWrap.innerHTML='';
-    pages.forEach((_,i)=>{
-      const d=document.createElement('button');
-      d.className='af-dot'+(i===0?' active':'');
-      d.onclick=()=>afGoTo(id,i);
-      dotsWrap.appendChild(d);
-    });
-  }
-  afUpdate(id);
-  let startX=0;
-  const viewport=track.closest('.af-carousel-viewport');
-  if(viewport){
-    viewport.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
-    viewport.addEventListener('touchend',e=>{
-      const diff=e.changedTouches[0].clientX-startX;
-      if(diff<-40)afGoTo(id,afState[id].current+1);
-      else if(diff>40)afGoTo(id,afState[id].current-1);
-    },{passive:true});
-  }
-});
-function afGoTo(id,index){
-  const s=afState[id];
-  s.current=Math.max(0,Math.min(index,s.total-1));
-  const track=document.getElementById('aft-'+id);
-  if(track)track.style.transform=`translateX(-${s.current*100}%)`;
-  afUpdate(id);
-}
-function afPrev(id){afGoTo(id,afState[id].current-1);}
-function afNext(id){afGoTo(id,afState[id].current+1);}
-function afUpdate(id){
-  const s=afState[id];
-  const prevBtn=document.getElementById('afb-'+id+'-prev');
-  const nextBtn=document.getElementById('afb-'+id+'-next');
-  if(prevBtn)prevBtn.disabled=s.current===0;
-  if(nextBtn)nextBtn.disabled=s.current===s.total-1;
-  const dotsWrap=document.getElementById('afd-'+id);
-  if(dotsWrap)Array.from(dotsWrap.children).forEach((d,i)=>d.classList.toggle('active',i===s.current));
-}
+  <footer>
+    <div class="fc">© 2026 Noor Ahmed · All Rights Reserved</div>
+    <div class="socials">
+      <a href="https://twitter.com/" target="_blank" class="soc">𝕏</a>
+      <a href="https://behance.net/" target="_blank" class="soc">Be</a>
+      <a href="https://dribbble.com/" target="_blank" class="soc">Dr</a>
+      <a href="https://linkedin.com/" target="_blank" class="soc">in</a>
+    </div>
+  </footer>
 
-// ─── LIGHTBOX ────────────────────────────────────────────
-let lbItems=[],lbIdx=0;
-function getAllFrameItems(){
-  afIds.forEach(id=>{
-    const track=document.getElementById('aft-'+id);
-    if(!track)return;
-    Array.from(track.querySelectorAll('.af-item')).forEach(item=>{
-      item.style.cursor='zoom-in';
-      item.addEventListener('click',()=>{
-        const allItems=Array.from(track.querySelectorAll('.af-item'));
-        const items=allItems.map(i=>{
-          const img=i.querySelector('img');
-          const vid=i.querySelector('video');
-          if(img)return{type:'image',src:img.src};
-          if(vid){const s=vid.querySelector('source');return{type:'video',src:s?s.src:vid.src};}
-          return null;
-        }).filter(Boolean);
-        lbOpen(items,allItems.indexOf(item));
-      });
-    });
-  });
-}
-getAllFrameItems();
-function lbOpen(items,index){lbItems=items;lbIdx=index;lbRender();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function lbClose(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('lb-media').innerHTML='';},350);}
-function lbNav(dir){lbIdx=(lbIdx+dir+lbItems.length)%lbItems.length;lbRender();}
-function lbRender(){
-  const wrap=document.getElementById('lb-media');
-  const item=lbItems[lbIdx];
-  if(item.type==='video'){wrap.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline controls style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;"></video>`;}
-  else{wrap.innerHTML=`<img src="${item.src}" alt="preview">`;}
-  const counter=document.getElementById('lb-counter');
-  if(lbItems.length>1)counter.textContent=`${lbIdx+1} / ${lbItems.length}`;
-  else counter.textContent='';
-  const dots=document.getElementById('lb-dots');
-  if(lbItems.length<=1||lbItems.length>20){dots.innerHTML='';}
-  else{dots.innerHTML=lbItems.map((x,i)=>`<button class="lb-dot${i===lbIdx?' active':''}" onclick="lbIdx=${i};lbRender()"></button>`).join('');}
-  const show=lbItems.length>1;
-  document.getElementById('lb-prev').style.display=show?'flex':'none';
-  document.getElementById('lb-next').style.display=show?'flex':'none';
-}
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('lightbox').classList.contains('open'))return;
-  if(e.key==='Escape')lbClose();
-  if(e.key==='ArrowRight')lbNav(1);
-  if(e.key==='ArrowLeft')lbNav(-1);
-});
-document.getElementById('lightbox').addEventListener('click',e=>{
-  if(e.target===document.getElementById('lightbox')||e.target===document.getElementById('lb-media'))lbClose();
-});
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lb-close" onclick="lbClose()">✕</button>
+    <button id="lb-prev" onclick="lbNav(-1)">‹</button>
+    <div id="lb-media"></div>
+    <button id="lb-next" onclick="lbNav(1)">›</button>
+    <div id="lb-counter"></div>
+    <div id="lb-dots"></div>
+  </div>
 
-// ─── 3D PACKAGING ────────────────────────────────────────
-const box=document.getElementById('pkg3d');
-let rX=-18,rY=28,drag=false,lx=0,ly=0,vx=0,vy=0;
-const applyR=()=>{box.style.transform=`translate(-50%,-50%) rotateX(${rX}deg) rotateY(${rY}deg)`;};
-(function spin(){if(!drag){rY+=0.35;applyR();}requestAnimationFrame(spin);})();
-box.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;vx=0;vy=0;e.preventDefault();});
-document.addEventListener('mousemove',e=>{if(!drag)return;vx=e.clientX-lx;vy=e.clientY-ly;rY+=vx*.5;rX-=vy*.5;rX=Math.max(-85,Math.min(85,rX));lx=e.clientX;ly=e.clientY;applyR();});
-document.addEventListener('mouseup',()=>{
-  if(!drag)return;drag=false;
-  let bvx=vx*.5,bvy=vy*.5;
-  (function mom(){if(Math.abs(bvx)<.05&&Math.abs(bvy)<.05)return;rY+=bvx*.4;rX-=bvy*.4;rX=Math.max(-85,Math.min(85,rX));bvx*=.92;bvy*=.92;applyR();requestAnimationFrame(mom);})();
-});
-box.addEventListener('touchstart',e=>{drag=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;vx=0;vy=0;},{passive:true});
-document.addEventListener('touchmove',e=>{if(!drag)return;vx=e.touches[0].clientX-lx;vy=e.touches[0].clientY-ly;rY+=vx*.5;rX-=vy*.5;rX=Math.max(-85,Math.min(85,rX));lx=e.touches[0].clientX;ly=e.touches[0].clientY;applyR();},{passive:true});
-document.addEventListener('touchend',()=>{drag=false;});
-const faces=['front','back','right','left','top','bottom'];
-const faceBtns=document.getElementById('face-btns');
-faces.forEach(face=>{
-  const inp=document.createElement('input');
-  inp.type='file';inp.accept='image/*,video/*';inp.id='finp-'+face;
-  document.body.appendChild(inp);
-  const btn=document.createElement('button');
-  btn.className='face-btn';btn.textContent=face.charAt(0).toUpperCase()+face.slice(1);
-  btn.onclick=()=>inp.click();
-  faceBtns.appendChild(btn);
-  inp.addEventListener('change',e=>{
-    const file=e.target.files[0];if(!file)return;
-    const url=URL.createObjectURL(file);
-    const faceEl=document.getElementById('f-'+face);
-    if(file.type.startsWith('video/')){faceEl.innerHTML=`<video src="${url}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>`;}
-    else{faceEl.innerHTML=`<img src="${url}" alt="${face}">`;}
-    btn.classList.add('done');
-  });
-});
-
-// ─── CONTACT FORM ────────────────────────────────────────
-function submitForm(){
-  const name=document.getElementById('cf-name').value.trim();
-  const email=document.getElementById('cf-email').value.trim();
-  const msg=document.getElementById('cf-msg').value.trim();
-  const status=document.getElementById('cf-status');
-  if(!name||!email||!msg){status.style.display='block';status.style.color='#f97316';status.textContent='Please fill in name, email and message.';return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.style.display='block';status.style.color='#f97316';status.textContent='Please enter a valid email address.';return;}
-  status.style.display='block';status.style.color='var(--g1)';
-  status.textContent='✓ Message sent! I\'ll get back to you soon.';
-  document.getElementById('cf-name').value='';
-  document.getElementById('cf-email').value='';
-  document.getElementById('cf-service').value='';
-  document.getElementById('cf-msg').value='';
-}
-</script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
