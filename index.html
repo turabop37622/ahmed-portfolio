@@ -1,1072 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Noor Ahmed</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <title>NOOR AHMED — Luxury Digital Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Familjen+Grotesk:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-  <div id="cur"></div>
-  <div id="curR"></div>
-
-  <!-- INTRO -->
-  <div id="intro">
-    <div class="intro-line"><span class="iw iw1">PORTFOLIO</span></div>
-    <div class="intro-line"><span class="iw iw2">CREATIVE</span></div>
-    <p class="intro-sub">Graphic · Video · Motion · UI/UX · AI</p>
-    <div class="intro-bar-wrap">
-      <div class="intro-bar"></div>
+  <!-- Splash Screen / Pre-loader -->
+  <div class="splash-screen" id="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo" id="splash-name"></div>
+      <div class="splash-sub" id="splash-tagline"></div>
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">Noor Ahmed</div>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#poster" onclick="closeMenu()">Poster</a></li>
-      <li><a href="#banner" onclick="closeMenu()">Banner</a></li>
-      <li><a href="#logo" onclick="closeMenu()">Logo</a></li>
-      <li><a href="#video" onclick="closeMenu()">Video</a></li>
-      <li><a href="#uiux" onclick="closeMenu()">UI/UX</a></li>
-      <li><a href="#invoice" onclick="closeMenu()">Invoice Card</a></li>
-      <li><a href="#packaging" onclick="closeMenu()">Packaging</a></li>
-      <li><a href="#app" onclick="closeMenu()">Mobile App</a></li>
-      <li><a href="#about" onclick="closeMenu()">About</a></li>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">NOOR AHMED</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="#contact" class="nav-cta">Hire Me</a>
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <div class="mob-overlay" id="mob-overlay" onclick="closeMenu()"></div>
+    <a href="#contact" class="cta-btn">Hire Me</a>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-blob1"></div>
-    <div class="hero-blob2"></div>
-    <div class="hero-blob3"></div>
-    <div class="hero-ring hero-ring-1"></div>
-    <div class="hero-ring hero-ring-2"></div>
-    <div class="hero-ring hero-ring-3"></div>
+  <main>
+    <!-- HERO SECTION -->
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-atmospheric">
+        <div class="hero-grain"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-particles" id="hero-particles"></div>
+      </div>
+      
+      <div class="hero-glow"></div>
+      <div class="hero-orb orb-1 layer" data-depth="0.2"></div>
+      <div class="hero-orb orb-2 layer" data-depth="0.4"></div>
+      <div class="hero-ring ring-1 layer" data-depth="0.1"></div>
+      <div class="hero-ring ring-2 layer" data-depth="0.15"></div>
 
-    <div class="hero-pill pill-2">⬡ UI / UX</div>
-    <div class="hero-pill pill-4">▲ AI Art</div>
-    <div class="hero-particles" id="hero-particles"></div>
-    <div class="hero-badge">
-      <div class="badge-dot"></div>Available for projects
-    </div>
-    <h1 class="htitle">
-      <span class="h-dim">DESIGN</span><br>
-      <span class="h-white">THAT</span><br>
-      <span class="h-grad">SPEAKS</span>
-    </h1>
-    <p class="hero-sub"><strong>UI/UX · AI Animation</strong><br>Visuals that stop the scroll — from brand identity to
-      motion magic.</p>
-    <div class="hero-btns">
-      <a href="#poster" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-outline">Get In Touch</a>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="mq-wrap">
-    <div class="mq-track">
-      <div class="mq-item">Graphic Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Logo & Branding</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Video Editing</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">UI / UX Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Lottie Animation</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Motion Graphics</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">AI Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Packaging Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Graphic Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Logo & Branding</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Video Editing</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">UI / UX Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Lottie Animation</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Motion Graphics</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">AI Design</div>
-      <div class="mq-sep">✦</div>
-      <div class="mq-item">Packaging Design</div>
-      <div class="mq-sep">✦</div>
-    </div>
-  </div>
-
-  <!-- ABOUT ME -->
-  <div class="apple-scroll-section" id="about" style="scroll-margin-top:80px;">
-    <div class="apple-sticky">
-      <div class="apple-frame" id="apple-frame">
-        <div class="apple-inner">
-          <div class="ag1"></div>
-          <div class="ag2"></div>
-          <div class="about-apple">
-            <div style="position:relative;">
-              <div class="aap-img"><span style="position:relative;z-index:2;">🧑‍🎨</span></div>
-              <div class="aap-f1">
-                <div class="aap-fl">Experience</div>
-                <div class="aap-fv">5+ Years</div>
-              </div>
-              <div class="aap-f2">
-                <div class="aap-fl">Projects</div>
-                <div class="aap-fv">200+</div>
-              </div>
-            </div>
-            <div class="aap-text">
-              <div class="aap-label">About Me</div>
-              <h2 class="aap-title">The person<br>behind the <span>pixels</span></h2>
-              <p class="aap-p">I'm a <strong>multi-disciplinary creative</strong> based in Pakistan — blending graphic
-                design, video editing, motion graphics, UI/UX, and AI-powered design into one complete skill set.</p>
-              <p class="aap-p">From <strong>logos and brand kits</strong> to <strong>Lottie animations and full UI
-                  systems</strong> — I handle the entire creative pipeline. My goal: <strong>make your brand impossible
-                  to ignore.</strong></p>
-              <div class="aap-tools">
-                <span class="aap-tool">Figma</span><span class="aap-tool">Photoshop</span><span
-                  class="aap-tool">Illustrator</span>
-                <span class="aap-tool">After Effects</span><span class="aap-tool">Premiere Pro</span><span
-                  class="aap-tool">LottieFiles</span>
-                <span class="aap-tool">Rive</span><span class="aap-tool">Midjourney</span><span
-                  class="aap-tool">Spline</span>
-              </div>
-            </div>
+      <div class="hero-content" id="hero-content-3d">
+        <div class="hero-label-wrap">
+          <div class="hero-label reveal-stagger">Digital Designer & Art Director</div>
+        </div>
+        <h1 class="hero-title layer" data-depth="0.1">
+          <div class="title-line">
+            <span class="reveal-mask">CREATIVE</span>
           </div>
-        </div>
-        <div class="apple-overlay">
-          <div class="ao-content" id="ao-content">
-            <div class="ao-tag">Creative Designer</div>
-            <div class="ao-title">Noor Ahmed —<br><span>Multi-disciplinary Creative</span></div>
-            <div class="ao-desc">Graphic · Video · Motion · UI/UX · AI Design</div>
+          <div class="title-line">
+            <span class="reveal-mask outline">VISIONARY</span>
           </div>
+        </h1>
+        <div class="hero-desc-wrap">
+          <p class="hero-desc reveal-stagger">Crafting elite visual experiences across graphic design, motion, and digital interfaces. Step into the dark room.</p>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 01: POSTER DESIGN -->
-  <div class="svc-sticky-wrap" id="poster">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">01 / 07</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">Poster</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-          <div class="svc-big-title-num">01</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">01 / 07 — Poster Design</div>
-            <p class="svc-big-desc-text">Eye-catching posters that speak louder than words. Bold compositions, sharp
-              typography, killer visuals.</p>
-            <div class="svc-big-chips">
-              <span class="chip">Event Poster</span><span class="chip">Brand Poster</span><span class="chip">Social
-                Media</span><span class="chip">Print</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Poster Design — Work Samples</div>
-              <div class="saf-tag">09 / 09</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-poster">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-poster">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/poster 1.jpg" alt="Poster 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 2.jpg" alt="Poster 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 3.jpg" alt="Poster 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 4.jpg" alt="Poster 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 5.jpg" alt="Poster 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 6.jpg" alt="Poster 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 7.jpg" alt="Poster 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 8.jpg" alt="Poster 8" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/poster 9.jpg" alt="Poster 9" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 10.jpg" alt="Poster 10" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 11.jpg" alt="Poster 11" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 12.jpg" alt="Poster 12" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 13.jpg" alt="Poster 13" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 14.jpg" alt="Poster 14" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 15.jpg" alt="Poster 15" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 16.jpg" alt="Poster 16" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/poster 17.jpg" alt="Poster 17" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 18.jpg" alt="Poster 18" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 19.jpg" alt="Poster 19" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 20.jpg" alt="Poster 20" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 21.jpg" alt="Poster 21" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 22.jpg" alt="Poster 22" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 23.jpg" alt="Poster 23" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 24.jpg" alt="Poster 24" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/poster 25.jpg" alt="Poster 25" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 26.jpg" alt="Poster 26" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 27.jpg" alt="Poster 27" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 28.jpg" alt="Poster 28" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 29.jpg" alt="Poster 29" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 30.jpg" alt="Poster 30" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 31.jpg" alt="Poster 31" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 32.jpg" alt="Poster 32" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/poster 33.jpg" alt="Poster 33" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 34.jpg" alt="Poster 34" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 35.jpg" alt="Poster 35" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 36.jpg" alt="Poster 36" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 37.jpg" alt="Poster 37" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 38.jpg" alt="Poster 38" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 39.jpg" alt="Poster 39" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 40.jpg" alt="Poster 40" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/poster 41.jpg" alt="Poster 41" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-poster-prev" onclick="afPrev('poster')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-poster"></div>
-                  <button class="af-btn" id="afb-poster-next" onclick="afNext('poster')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="svc-content-inner" style="padding:0 18px 60px;display:none;" id="mob-poster">
-        <div class="svc-mobile-header">
-          <div class="svc-mobile-num">01</div>
-          <div class="svc-mobile-info">
-            <div class="svc-mobile-eyebrow">01 / 07</div>
-            <div class="svc-mobile-title"
-              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
-              Poster Design</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 02: BANNER DESIGN -->
-  <div class="svc-sticky-wrap" id="banner">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">02 / 07</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">Banner</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-          <div class="svc-big-title-num">02</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">02 / 07 — Banner Design</div>
-            <p class="svc-big-desc-text">Stunning banners for digital and print — web banners, social ads, outdoor
-              billboards.</p>
-            <div class="svc-big-chips">
-              <span class="chip c2">Web Banner</span><span class="chip c2">Social Ad</span><span
-                class="chip c2">Billboard</span><span class="chip c2">Display Ad</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Banner Design — Work Samples</div>
-              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">02 / 07</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-banner">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-banner">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/banner 1.jpg" alt="Banner 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 2.png" alt="Banner 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 3.jpg" alt="Banner 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 4.jpg" alt="Banner 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 5.jpg" alt="Banner 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 6.jpg" alt="Banner 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 7.jpg" alt="Banner 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 8.jpg" alt="Banner 8" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 9.jpg" alt="Banner 9" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/banner 10.jpg" alt="Banner 10" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 11.jpg" alt="Banner 11" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 12.jpg" alt="Banner 12" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 13.jpg" alt="Banner 13" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 14.jpg" alt="Banner 14" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/banner 15.jpg" alt="Banner 15" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-banner-prev" onclick="afPrev('banner')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-banner"></div>
-                  <button class="af-btn" id="afb-banner-next" onclick="afNext('banner')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 03: LOGO & BRANDING -->
-  <div class="svc-sticky-wrap" id="logo">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">03 / 07</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">Logo &</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Brand</span></div>
-          <div class="svc-big-title-num">03</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">03 / 07 — Logo & Branding</div>
-            <p class="svc-big-desc-text">A brand is more than a logo — it's a feeling. Complete identities that are
-              memorable and timeless.</p>
-            <div class="svc-big-chips">
-              <span class="chip c2">Logo Design</span><span class="chip c2">Business Card</span><span
-                class="chip c2">Brand Kit</span><span class="chip c2">Style Guide</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Logo & Branding — Work Samples</div>
-              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">03 / 07</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-logo">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-logo">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/logo 1.png" alt="Logo 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 2.png" alt="Logo 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 3.png" alt="Logo 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 4.png" alt="Logo 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 5.png" alt="Logo 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 6.png" alt="Logo 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 7.png" alt="Logo 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/logo 8.png" alt="Logo 8" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-logo-prev" onclick="afPrev('logo')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-logo"></div>
-                  <button class="af-btn" id="afb-logo-next" onclick="afNext('logo')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 04: VIDEO EDITING -->
-  <div class="svc-sticky-wrap" id="video">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">04 / 07</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">Video</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Editing</span></div>
-          <div class="svc-big-title-num">04</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">04 / 07 — Video Editing</div>
-            <p class="svc-big-desc-text">Cinematic cuts, smooth transitions, color grading that transforms raw footage
-              into compelling stories.</p>
-            <div class="svc-big-chips">
-              <span class="chip c3">Reels</span><span class="chip c3">Ads</span><span class="chip c3">Color
-                Grade</span><span class="chip c3">VFX</span><span class="chip c3">YouTube</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Video Editing — Work Samples</div>
-              <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">04 / 07</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-video">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-video">
-                    <div class="af-page">
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video1.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video2.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video3.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video4.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video5.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video6.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video7.mp4" type="video/mp4">
-                        </video></div>
-                      <div class="af-item"><video autoplay muted loop playsinline>
-                          <source src="assets/video8.mp4" type="video/mp4">
-                        </video></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-video-prev" onclick="afPrev('video')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-video"></div>
-                  <button class="af-btn" id="afb-video-next" onclick="afNext('video')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 05: UI/UX -->
-  <div class="svc-sticky-wrap" id="uiux">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">05 / 07</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">UI & UX</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Design</span></div>
-          <div class="svc-big-title-num">05</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">05 / 07 — UI/UX Design</div>
-            <p class="svc-big-desc-text">Interfaces that feel as good as they look. From wireframe to pixel-perfect
-              screens.</p>
-            <div class="svc-big-chips">
-              <span class="chip c3">App Design</span><span class="chip c3">Web Design</span><span
-                class="chip c3">Wireframe</span><span class="chip c3">Prototype</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">UI/UX Design — Work Samples</div>
-              <div class="saf-tag" style="border-color:rgba(249,115,22,.2);color:rgba(249,115,22,.7);">05 / 07</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-uiux">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-uiux">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/uiux 1.jpg" alt="UIUX 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 2.jpg" alt="UIUX 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 3.jpg" alt="UIUX 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 4.jpg" alt="UIUX 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 5.jpg" alt="UIUX 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 6.jpg" alt="UIUX 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 7.jpg" alt="UIUX 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 8.jpg" alt="UIUX 8" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/uiux 9.jpg" alt="UIUX 9" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/uiux 10.jpg" alt="UIUX 10" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-uiux-prev" onclick="afPrev('uiux')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-uiux"></div>
-                  <button class="af-btn" id="afb-uiux-next" onclick="afNext('uiux')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SVC 06: LOTTIE & MOTION -->
-  <div class="svc-sticky-wrap" id="lottie">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">06 / 09</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text">Lottie &</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text">Motion</span></div>
-          <div class="svc-big-title-num">06</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">06 / 09 — Motion & Lottie</div>
-            <p class="svc-big-desc-text">Bringing UI to life with smooth Lottie animations. Loading screens, icon
-              animations, app transitions.</p>
-            <div class="svc-big-chips">
-              <span class="chip">Lottie Files</span><span class="chip">After Effects</span><span
-                class="chip">Rive</span><span class="chip">UI Motion</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Lottie & Motion — Work Samples</div>
-              <div class="saf-tag">06 / 09</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-lottie">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-lottie">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/lottie1.gif" alt="Lottie 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie2.gif" alt="Lottie 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie3.gif" alt="Lottie 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie4.gif" alt="Lottie 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie5.gif" alt="Lottie 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie6.gif" alt="Lottie 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie7.gif" alt="Lottie 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie8.gif" alt="Lottie 8" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/lottie9.gif" alt="Lottie 9" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie10.gif" alt="Lottie 10" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie11.gif" alt="Lottie 11" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/lottie12.gif" alt="Lottie 12" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-lottie-prev" onclick="afPrev('lottie')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-lottie"></div>
-                  <button class="af-btn" id="afb-lottie-next" onclick="afNext('lottie')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SVC 07: INVOICE CARD & LETTERHEAD -->
-  <div class="svc-sticky-wrap" id="invoice">
-    <div class="svc-sticky-height">
-      <div class="svc-sticky-pin">
-        <div class="svc-curtain-top"></div>
-        <div class="svc-curtain-bottom"></div>
-        <div class="svc-scanline"></div>
-        <div class="svc-bg-glow"></div>
-        <div class="svc-corner tl"></div>
-        <div class="svc-corner tr"></div>
-        <div class="svc-corner bl"></div>
-        <div class="svc-corner br"></div>
-        <div class="svc-index-tag">07 / 09</div>
-        <div class="svc-big-title">
-          <div class="svc-title-clip"><span class="svc-big-title-text"
-              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Invoice
-              &</span></div>
-          <div class="svc-title-clip"><span class="svc-big-title-text"
-              style="background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Letterhead</span>
-          </div>
-          <div class="svc-big-title-num">07</div>
-        </div>
-        <div class="svc-big-meta">
-          <div class="svc-big-desc-col">
-            <div class="svc-big-eyebrow">07 / 09 — Invoice Card & Letterhead</div>
-            <p class="svc-big-desc-text">Professional business documents that establish credibility. Custom invoice
-              cards, letterheads, and stationery designs.</p>
-            <div class="svc-big-chips">
-              <span class="chip">Invoice Card</span><span class="chip">Letterhead</span><span class="chip">Envelope
-                Design</span><span class="chip">Stationery</span>
-            </div>
-          </div>
-        </div>
-        <div class="svc-big-rule"></div>
-      </div>
-    </div>
-    <div class="svc-content-block">
-      <div class="section-apple-wrap">
-        <div class="section-apple-sticky">
-          <div class="section-apple-frame">
-            <div class="saf-topbar">
-              <div class="saf-dots">
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-                <div class="saf-dot"></div>
-              </div>
-              <div class="saf-title">Invoice Card & Letterhead — Work Samples</div>
-              <div class="saf-tag" style="border-color:rgba(6,182,212,.2);color:rgba(6,182,212,.7);">07 / 09</div>
-            </div>
-            <div class="saf-body">
-              <div class="af-carousel" id="afc-invoice">
-                <div class="af-carousel-viewport">
-                  <div class="af-track" id="aft-invoice">
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/invoice 1.jpg" alt="Invoice 1" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 2.png" alt="Invoice 2" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 3.png" alt="Invoice 3" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 4.png" alt="Invoice 4" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 5.png" alt="Invoice 5" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 6.png" alt="Invoice 6" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 7.png" alt="Invoice 7" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 8.png" alt="Invoice 8" loading="lazy"></div>
-                    </div>
-                    <div class="af-page">
-                      <div class="af-item"><img src="assets/invoice 9.png" alt="Invoice 9" loading="lazy"></div>
-                      <div class="af-item"><img src="assets/invoice 10.png" alt="Invoice 10" loading="lazy"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="af-footer">
-                  <button class="af-btn" id="afb-invoice-prev" onclick="afPrev('invoice')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <div class="af-dots-wrap" id="afd-invoice"></div>
-                  <button class="af-btn" id="afb-invoice-next" onclick="afNext('invoice')">
-                    <svg viewBox="0 0 24 24">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MOBILE APP SHOWCASE -->
-  <section class="app-section" id="app">
-    <div class="app-inner">
-      <div class="app-left">
-        <div class="sec-label reveal">08 / 09 — Mobile App</div>
-        <h2 class="app-title reveal rd1">App Screen<br><span>Gallery</span></h2>
-        <p class="app-desc reveal rd2">Beautiful mobile interfaces showcasing complete user experiences and design
-          excellence across iOS applications.</p>
       </div>
 
-      <div class="app-right">
-        <!-- CARGET APP - HORIZONTAL CAROUSEL -->
-        <div class="app-group reveal rd3">
-          <div class="app-category-label">CarGet</div>
-          <div class="carousel-section">
-            <div class="carousel-track" id="cargetCarousel">
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/1.png" alt="CarGet 1">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/2.png" alt="CarGet 2">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/3.png" alt="CarGet 3">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/4.png" alt="CarGet 4">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/5.png" alt="CarGet 5">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/6.png" alt="CarGet 6">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-fade-left"></div>
-            <div class="carousel-fade-right"></div>
-          </div>
-        </div>
+    </section>
 
-        <!-- OTOZ.AI APP - HORIZONTAL CAROUSEL -->
-        <div class="app-group reveal rd3">
-          <div class="app-category-label">Otoz.ai</div>
-          <div class="carousel-section">
-            <div class="carousel-track" id="otozCarousel">
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/7.png" alt="Otoz 1">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/8.png" alt="Otoz 2">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/11.png" alt="Otoz 3">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/22.png" alt="Otoz 4">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/33.png" alt="Otoz 5">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/44.png" alt="Otoz 6">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/55.png" alt="Otoz 7">
-                </div>
-              </div>
-              <div class="carousel-card">
-                <div class="card-inner">
-                  <img src="assets/66.png" alt="Otoz 8">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-fade-left"></div>
-            <div class="carousel-fade-right"></div>
+    <!-- ROLLING SKILLS MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="marquee-item">Logo Designer</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Poster Designer</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">UI/UX Interface</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Lottie Creator</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Card Design</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Video Editing</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Animation</div>
+        <div class="marquee-star">✦</div>
+        <!-- Duplicated for seamless infinite loop -->
+        <div class="marquee-item">Logo Designer</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Poster Designer</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">UI/UX Interface</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Lottie Creator</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Card Design</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Video Editing</div>
+        <div class="marquee-star">✦</div>
+        <div class="marquee-item">Animation</div>
+        <div class="marquee-star">✦</div>
+      </div>
+    </div>
+
+    <!-- ABOUT ME SECTION (Apple-style Scroll & Pinning) -->
+    <section class="about-section" id="about">
+      <div class="about-sticky-wrapper">
+        <div class="about-container">
+          <div class="about-visual reveal">
+            <img src="assets/Gemini_Generated_Image_ak06omak06omak06.png" alt="Noor Ahmed" class="about-portrait">
+            <div class="portrait-glow"></div>
+          </div>
+          <div class="about-content">
+            <div class="sec-label">00 / The Vision</div>
+            <p class="about-text" id="about-scroll-text">
+              <span class="word">I</span> <span class="word">am</span> <span class="word">Noor</span> <span class="word">Ahmed,</span> 
+              <span class="word">a</span> <span class="word">creative</span> <span class="word">visionary</span> 
+              <span class="word">driven</span> <span class="word">by</span> <span class="word">the</span> <span class="word">pursuit</span> <span class="word">of</span> 
+              <span class="word">perfection</span> <span class="word">in</span> <span class="word">every</span> <span class="word">pixel.</span> 
+              <span class="word">My</span> <span class="word">work</span> <span class="word">blends</span> <span class="word">emotion,</span> 
+              <span class="word">artistry,</span> <span class="word">and</span> <span class="word">technology</span> 
+              <span class="word">to</span> <span class="word">create</span> <span class="word">digital</span> <span class="word">experiences</span> 
+              <span class="word">that</span> <span class="word">leave</span> <span class="word">a</span> <span class="word">lasting</span> <span class="word">mark.</span>
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3D PACKAGING -->
-  <section class="pkg-section" id="packaging">
-    <div class="pkg-inner">
-      <div class="pkg-text">
-        <div class="sec-label reveal">09 / 09 — Packaging Design</div>
-        <h2 class="pkg-title reveal rd1">3D Packaging<br><span>Mockups</span></h2>
-        <p class="pkg-desc reveal rd2">Drag the box to rotate 360° in any direction. Upload your own packaging image to
-          each face and see it come alive.</p>
-        <div class="pkg-hint reveal rd2">
-          <svg viewBox="0 0 24 24" stroke-width="2">
-            <path
-              d="M12 2v4m0 12v4M2 12h4m12 0h4M6.34 6.34l2.83 2.83m5.66 5.66l2.83 2.83M6.34 17.66l2.83-2.83m5.66-5.66l2.83-2.83" />
-          </svg>
-          Drag to Rotate 360°
+    <!-- 01: POSTERS -->
+    <section class="section" id="posters">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">01 / Archives</div>
+          <h2 class="sec-title">Poster Design</h2>
         </div>
-        <div class="chips reveal rd3">
-          <span class="chip">Box Design</span><span class="chip">Label Design</span><span class="chip">3D
-            Mockup</span><span class="chip">360° View</span>
-        </div>
-        <div class="face-upload-row reveal rd3" id="face-btns" style="margin-top:20px;"></div>
-      </div>
-      <div class="pkg-viewer reveal rd2">
-        <div class="viewer-wrap">
-          <div class="box-glow"></div>
-          <div id="pkg3d">
-            <div class="face f-front" id="f-front">
-              <div class="fp"><span class="fi-icon">📦</span>Front</div>
-            </div>
-            <div class="face f-back" id="f-back">
-              <div class="fp"><span class="fi-icon">📦</span>Back</div>
-            </div>
-            <div class="face f-right" id="f-right">
-              <div class="fp"><span class="fi-icon">📦</span>Right</div>
-            </div>
-            <div class="face f-left" id="f-left">
-              <div class="fp"><span class="fi-icon">📦</span>Left</div>
-            </div>
-            <div class="face f-top" id="f-top">
-              <div class="fp"><span class="fi-icon">⬆</span>Top</div>
-            </div>
-            <div class="face f-bottom" id="f-bottom">
-              <div class="fp"><span class="fi-icon">⬇</span>Bottom</div>
-            </div>
-          </div>
-          <div class="drag-hint">Drag to rotate</div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-posters', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-posters', 1)">›</button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- APP LIGHTBOX/MODAL -->
-  <div id="appModal" class="app-modal">
-    <button class="modal-close" onclick="closeAppModal()">✕</button>
-    <button class="modal-nav modal-prev" onclick="appModalNav(-1)">‹</button>
-    <div class="modal-content">
-      <img id="modalImg" src="" alt="App Screen">
-    </div>
-    <button class="modal-nav modal-next" onclick="appModalNav(1)">›</button>
-    <div class="modal-counter" id="modalCounter"></div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-section">
-    <div class="stats-inner">
-      <div class="stat reveal">
-        <div class="stat-n" data-count="200">0</div>
-        <div class="stat-l">Projects Done</div>
-      </div>
-      <div class="stat reveal rd1">
-        <div class="stat-n" data-count="80">0</div>
-        <div class="stat-l">Happy Clients</div>
-      </div>
-      <div class="stat reveal rd2">
-        <div class="stat-n" data-count="5">0</div>
-        <div class="stat-l">Years Experience</div>
-      </div>
-      <div class="stat reveal rd3">
-        <div class="stat-n" data-count="99">0</div>
-        <div class="stat-l">% Satisfaction</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-section">
-      <div class="contact-inner">
-        <div class="sec-label reveal">Ready to start?</div>
-        <div class="contact-big reveal rd1"><span class="cw">LET'S</span><br><span class="cg">WORK</span></div>
-        <div class="cform reveal rd2">
-          <div class="f2col">
-            <input type="text" class="fi" placeholder="Your Name" id="cf-name">
-            <input type="email" class="fi" placeholder="Email Address" id="cf-email">
-          </div>
-          <input type="text" class="fi" style="margin-bottom:14px;" placeholder="Service (Poster, Logo, Video, UI...)"
-            id="cf-service">
-          <textarea class="fi" placeholder="Tell me about your project..." id="cf-msg"></textarea>
-          <button class="fbtn" onclick="submitForm()">Send Message →</button>
-          <div id="cf-status" style="margin-top:12px;font-size:.82rem;text-align:center;color:var(--g1);display:none;">
-          </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-posters">
+          <script>
+            for(let i=1; i<=41; i++) {
+              document.write(`<div class="c-item poster"><img src="assets/poster ${i}.jpg" alt="Poster ${i}"></div>`);
+            }
+          </script>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="fc">© 2026 Noor Ahmed · All Rights Reserved</div>
-    <div class="socials">
-      <a href="https://twitter.com/" target="_blank" class="soc">𝕏</a>
-      <a href="https://behance.net/" target="_blank" class="soc">Be</a>
-      <a href="https://dribbble.com/" target="_blank" class="soc">Dr</a>
-      <a href="https://linkedin.com/" target="_blank" class="soc">in</a>
+    <!-- 02: BANNERS -->
+    <section class="section" id="banners">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">02 / Digital Advertising</div>
+          <h2 class="sec-title">Banner Design</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-banners', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-banners', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-banners">
+          <script>
+            for(let i=1; i<=15; i++) {
+              let ext = (i===2) ? 'png' : 'jpg';
+              document.write(`<div class="c-item wide"><img src="assets/banner ${i}.${ext}" alt="Banner ${i}"></div>`);
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02: BRAND LOGOS -->
+    <section class="section" id="logos">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">02 / Identity Systems</div>
+          <h2 class="sec-title">Brand Logos</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-logos', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-logos', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-logos">
+          <script>
+            for(let i=1; i<=8; i++) {
+              document.write(`<div class="c-item square"><img src="assets/logo ${i}.png" alt="Logo ${i}" style="object-fit:contain; padding:20px;"></div>`);
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: VIDEO EDITING -->
+    <section class="section" id="video">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">03 / Motion Picture</div>
+          <h2 class="sec-title">Video Editing</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-video', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-video', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-video">
+          <script>
+            for(let i=1; i<=8; i++) {
+              document.write(`<div class="c-item wide"><video src="assets/video${i}.mp4" autoplay loop muted playsinline></video></div>`);
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: LOTTIE & MOTION -->
+    <section class="section" id="lottie">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">04 / Micro-Interactions</div>
+          <h2 class="sec-title">Lottie Animation</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-lottie', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-lottie', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-lottie">
+          <script>
+            for(let i=1; i<=13; i++) {
+              document.write(`<div class="c-item square"><img src="assets/lottie${i}.gif" alt="Lottie ${i}" style="object-fit:contain"></div>`);
+            }
+          </script>
+          <!-- Custom Extra Gif -->
+          <div class="c-item square"><img src="assets/penny welcome  1.gif" alt="Lottie Penny" style="object-fit:contain"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05: STATIONERY DESIGN -->
+    <section class="section" id="stationery">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">05 / Corporate Identity</div>
+          <h2 class="sec-title">Stationery Design</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-inv', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-inv', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-inv">
+          <script>
+            for(let i=1; i<=8; i++) {
+              let ext = (i===1) ? 'jpg' : 'png';
+              document.write(`<div class="c-item poster"><img src="assets/invoice ${i}.${ext}" alt="Stationery ${i}" style="object-fit:contain"></div>`);
+            }
+          </script>
+          <div class="c-item poster"><img src="assets/Proforma.png" alt="Proforma" style="object-fit:contain"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: PACKAGING DESIGN -->
+    <section class="section" id="packaging">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">06 / Product Identity</div>
+          <h2 class="sec-title">Packaging Design</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" onclick="slideCarousel('c-pkg', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-pkg', 1)">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="c-pkg">
+          <script>
+            for(let i=1; i<=4; i++) {
+              document.write(`<div class="c-item poster"><img src="assets/packaging-${i}.png" alt="Packaging ${i}" style="object-fit:contain"></div>`);
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07: MOBILE APPS (Two Rows) -->
+    <section class="section" id="apps">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-label">07 / iOS & Android Interfaces</div>
+          <h2 class="sec-title">Mobile Apps</h2>
+        </div>
+      </div>
+
+      <!-- App Row 1 (CarGet) -->
+      <div class="carousel-wrap reveal" style="margin-bottom: 4vh;">
+        <div style="padding: 0 5vw 10px; color: var(--text-muted); font-weight: 600;">CARGET APP SCENES</div>
+        <div class="carousel-track" id="c-apps-carget">
+          <script>
+            [1,2,3,4,5,6].forEach(n => {
+              document.write(`<div class="c-item mobile"><img src="assets/${n}.png" alt="App"></div>`);
+            });
+          </script>
+        </div>
+        <div class="carousel-controls" style="position:absolute; right:5vw; top:-10px;">
+          <button class="c-btn" onclick="slideCarousel('c-apps-carget', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-apps-carget', 1)">›</button>
+        </div>
+      </div>
+
+      <!-- App Row 2 (Otoz AI) -->
+      <div class="carousel-wrap reveal">
+        <div style="padding: 0 5vw 10px; color: var(--text-muted); font-weight: 600;">OTOZ AI SCENES</div>
+        <div class="carousel-track" id="c-apps-otoz">
+          <script>
+            [7,8,11,22,33,44,55,66].forEach(n => {
+              document.write(`<div class="c-item mobile"><img src="assets/${n}.png" alt="App"></div>`);
+            });
+          </script>
+        </div>
+        <div class="carousel-controls" style="position:absolute; right:5vw; top:-10px;">
+          <button class="c-btn" onclick="slideCarousel('c-apps-otoz', -1)">‹</button>
+          <button class="c-btn" onclick="slideCarousel('c-apps-otoz', 1)">›</button>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div class="sec-label" style="margin-bottom: 2rem;">Ready to Talk?</div>
+    <h2 class="footer-title">
+      <span id="typewriter-text"></span><span class="cursor-blink">|</span>
+    </h2>
+    
+    <div class="footer-form-container reveal">
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-row">
+          <input type="text" placeholder="YOUR NAME" required>
+          <input type="email" placeholder="EMAIL ADDRESS" required>
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="PROJECT TYPE">
+          <input type="text" placeholder="BUDGET RANGE">
+        </div>
+        <textarea rows="4" placeholder="YOUR MESSAGE" required></textarea>
+        <button type="submit" class="submit-btn">SEND MESSAGE ✦</button>
+      </form>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Noor Ahmed</div>
+      <div style="display:flex; gap: 2vw;">
+        <a href="#">Twitter</a>
+        <a href="#">Behance</a>
+        <a href="#">Dribbble</a>
+      </div>
     </div>
   </footer>
 
   <!-- LIGHTBOX -->
-  <div id="lightbox">
-    <button id="lb-close" onclick="lbClose()">✕</button>
-    <button id="lb-prev" onclick="lbNav(-1)">‹</button>
-    <div id="lb-media"></div>
-    <button id="lb-next" onclick="lbNav(1)">›</button>
-    <div id="lb-counter"></div>
-    <div id="lb-dots"></div>
+  <div class="lightbox" id="lightbox">
+    <span class="lb-close" onclick="closeLightbox()">✕</span>
+    <button class="lb-nav lb-prev" onclick="changeLightbox(-1)">‹</button>
+    <div id="lb-content"></div>
+    <button class="lb-nav lb-next" onclick="changeLightbox(1)">›</button>
   </div>
 
   <script src="js/main.js"></script>
+  <!-- Re-trigger lightbox binding for newly JS written components -->
+  <script>
+    setTimeout(() => {
+      document.querySelectorAll('.c-item img, .c-item video').forEach(media => {
+        media.style.cursor = 'zoom-in';
+        media.addEventListener('click', () => {
+          const lb = document.getElementById('lightbox');
+          const lbContent = document.getElementById('lb-content');
+          if(!lb || !lbContent) return;
+          lbContent.innerHTML = '';
+          const clone = media.cloneNode(true);
+          clone.style.cursor = 'default';
+          if(clone.tagName === 'VIDEO') {
+              clone.controls = true;
+              clone.muted = false;
+          }
+          lbContent.appendChild(clone);
+          lb.classList.add('active');
+        });
+      });
+    }, 500);
+  </script>
 </body>
-
 </html>
